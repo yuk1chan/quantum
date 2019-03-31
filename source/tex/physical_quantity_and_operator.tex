@@ -1,0 +1,208 @@
+\section{物理量と演算子}
+\subsection{演算子の交換関係}
+量子力学では演算子同士の交換関係が重要な役割を果たしている。
+古典力学との大きな違いは、演算子の演算の順序によって、一般には、異なる結果になるということだ。
+つまり、$\hat{A}$と$\hat{B}$という$2$つの演算子について、積$\hat{A}\hat{B}$と$\hat{B}\hat{A}$は一般には異なる。つまり、非可換である。
+ここで、$\hat{A}$と$\hat{B}$の交換子$[\hat{A},\hat{B}]$を導入する。交換子は
+\begin{equation}
+	[\hat{A},\hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A}
+\end{equation}
+という演算をする。$\hat{A}$と$\hat{B}$が可換である時は任意の$\psi$について
+\begin{equation}
+	[\hat{A},\hat{B}]\psi = 0
+\end{equation}
+が成立する。$\psi$を省略して
+\begin{equation}
+	[\hat{A},\hat{B}] = 0
+\end{equation}
+と書くことが多い。
+
+交換子の主な性質をまとめておく。
+\begin{itemize}
+	\item $[\hat{A},\hat{A}] = 0$
+	\item $[\hat{A},\hat{B}] = - [\hat{B},\hat{A}]$~(交代性)
+	\item $[\hat{A},\hat{B} + \hat{C}] = [\hat{A},\hat{B}] + [\hat{A},\hat{C}]$~(線型性)
+	\item $[\hat{A},\hat{B}\hat{C}] = [\hat{A},\hat{B}]\hat{C} + \hat{B}[\hat{A},\hat{C}]$~(ライプニッツ則)
+\end{itemize}
+
+
+\subsection{エルミート演算子}
+物理量$A$に対応した演算子を$\hat{A}$と書く。重ね合わせの原理を満たすためには$\hat{A}$は線形演算子でなければならない。
+また、演算子$\hat{A}$が物理量を表しているので、その期待値は実数でなければならない。
+
+時刻$t$における状態$\psi(\hat{r},t)$での期待値$\langle A \rangle$は
+\begin{equation}
+	\langle A \rangle = \int \psi^* \hat{A} \psi dr^3
+\end{equation}
+で、これの複素共役は
+\begin{equation}
+	\langle A \rangle^* = \int (\hat{A}\psi)^* \psi dr^3
+\end{equation}
+となる。
+$\langle A \rangle$は実数なので、$\langle A \rangle = \langle A \rangle^*$である。
+なので、
+\begin{equation}
+	\label{ope_require}
+	\int \psi^* \hat{A} \psi dr^3 = \int (\hat{A}\psi)^* \psi dr^3
+\end{equation}
+が成立しなければならない。
+これを満たす演算子を{\bf エルミート演算子}という。
+
+\begin{itemize}
+	\item 位置の演算子 $\hat{\bm{r}}$
+	\item 運動量演算子 $\hat{\bm{p}}$
+	\item ハミルトニアン $\hat{H}$
+\end{itemize}
+はエルミート演算子である。
+
+実際に、運動量演算子$\hat{\bm{p}} = -i\hbar\nabla$がエルミート演算子であることを示してみる。
+$\psi$が無限遠で$0$になることを考えて部分積分をする。
+\begin{align}
+	\int \psi^*\hat{\bm{p}}\psi dr^3
+	&= -i\hbar \int \psi^* \nabla \psi dr^3 \\
+	&= i\hbar \int \nabla \psi^* \psi dr^3 \\
+	&= \int (-i\hbar\psi)^*\psi dr^3 \\
+	&= \int (\hat{\bm{p}}\psi)^*\psi dr^3
+\end{align}
+と、示せた。
+
+また、$\psi_1$、$\psi_2$を$2$乗積分可能な関数とすると、
+\begin{equation}
+	\psi = \psi_1 + \lambda \psi_2
+\end{equation}
+も$2$乗積分可能な関数である。($\lambda$は複素数)
+これを\ref{ope_require}に代入すると、
+\begin{equation}
+	\int (\psi_1^* + \lambda^* \psi_2^*) \hat{A} (\psi_1 + \lambda \psi_2)dr^3
+	= \int (\hat{A}\psi_1 + \lambda \hat{A}\psi_2)^* (\psi_1 + \lambda \psi_2) dr^3
+\end{equation}
+これと、$\langle A \rangle$が実数であるための条件
+\begin{equation}
+	\int \psi_i^* \hat{A} \psi_i dr^3 = \int (\hat{A}\psi_i)^*\psi_i dr^3,~(i = 1,2)
+\end{equation}
+より、
+\begin{equation}
+	\lambda \left[ \int \psi_1^*\hat{A}\psi_2 dr^3 - \int(\hat{A}\psi_1)^* \psi_2 dr^3 \right] +
+	\lambda^* \left[ \int \psi_2^*\hat{A}\psi_1 dr^3 - \int(\hat{A}\psi_2)^* \psi_1 dr^3 \right] = 0
+\end{equation}
+となる。これは任意の$\lambda$について成立するので、[]の中は$0$でなければならない。
+つまり、
+\begin{equation}
+	\int \psi_1^*\hat{A}\psi_2 dr^3 = \int(\hat{A}\psi_1)^* \psi_2 dr^3
+\end{equation}
+となる。エルミート演算子の重要な性質の$1$つである。
+
+\subsection{エルミート共役な演算子}
+任意の演算子$\hat{A}$と、任意の$\psi_1$と$\psi_2$について
+\begin{equation}
+	\int \psi_1^*\hat{A^\dagger}\psi_2 dr^3 = \int(\hat{A}\psi_1)^* \psi_2 dr^3
+\end{equation}
+を満たす時、$\hat{A^\dagger}$を$\hat{A}$に対する{\bf エルミート共役な演算子}という。
+特に、$\hat{A^\dagger} = \hat{A}$、つまり、自己共役の時、$\hat{A}$をエルミート演算子という。
+
+いくつかエルミート共役な演算子についての性質をあげておく。(以下の演算子は全てエルミート演算子とする。)
+\begin{itemize}
+	\item $(\hat{A}\hat{B})^\dagger = \hat{B}^\dagger\hat{A}^\dagger$
+	\item 一般に、$(\hat{A}\hat{B}\hat{C}\cdots\hat{Z})^\dagger = \hat{Z}^\dagger\cdots\hat{C}^\dagger\hat{B}^\dagger\hat{A}^\dagger$
+	\item $\hat{A}$、$\hat{B}$が可換であれば、積$\hat{A}\hat{B}$もエルミート
+	\item $\hat{A}$、$\hat{B}$が線形でエルミートであれば、$\dfrac{1}{2}[\hat{A}\hat{B} + \hat{B}\hat{A}]$や$i[\hat{A}\hat{B} - \hat{B}\hat{A}]$も線形でエルミート
+\end{itemize}
+
+$\hat{A}$がエルミート共役な演算子として、$U \equiv e^{i\hat{A}}$という演算子を定義する。
+すると、
+\begin{equation}
+	U^\dagger = (e^{i\hat{A}})^\dagger = e^{-i\hat{A}} = U^{-1}
+\end{equation}
+となる。このことから$U$はユニタリーであると分かる。
+
+
+\subsection{位置と運動量演算子の交換関係}
+位置についての演算子は
+\begin{equation}
+	\hat{x}, \hat{y},\hat{z}
+\end{equation}
+
+運動量演算子は
+
+\begin{align}
+	\hat{p_x} &= \dfrac{\hbar}{i}\dfrac{\partial}{\partial x}\\
+	\hat{p_y} &= \dfrac{\hbar}{i}\dfrac{\partial}{\partial y}\\
+	\hat{p_z} &= \dfrac{\hbar}{i}\dfrac{\partial}{\partial z}
+\end{align}
+である。
+
+これらについて
+\begin{equation}
+	[\hat{x},\hat{p_x}] = [\hat{y},\hat{p_y}] = [\hat{z},\hat{p_z}] = i\hbar
+\end{equation}
+となる。
+実際に、
+\begin{align}
+	[\hat{x},\hat{p_x}]\psi
+	&= \hat{x}\hat{p_x}\psi - \hat{p_x}\hat{x}\psi \\
+	&= x\dfrac{\hbar}{i}\dfrac{\partial}{\partial x}\psi - \dfrac{\hbar}{i}\dfrac{\partial}{\partial x}x\psi \\
+	&= x\dfrac{\hbar}{i}\dfrac{\partial}{\partial x}\psi - \left[ \dfrac{\hbar}{i} + x\dfrac{\hbar}{i}\dfrac{\partial}{\partial x} \right]\psi \\
+	&= i\hbar\psi
+\end{align}
+他についても同様。
+
+また、
+\begin{equation}
+	[\hat{x},\hat{p_y}] = [\hat{x},\hat{p_z}] =
+	[\hat{y},\hat{p_x}] = [\hat{y},\hat{p_z}] =
+	[\hat{z},\hat{p_x}] = [\hat{z},\hat{p_y}] = 0
+\end{equation}
+であることも同様に確認できる。
+
+座標$x,y,z$を$r_i,(i = 1,2,3)$と表すと、一般に
+\begin{align}
+	[\hat{r_i},\hat{r_j}] &= 0 \\
+	[\hat{p_i},\hat{p_j}] &= 0 \\
+	[\hat{r_i},\hat{p_j}] &= i\hbar\delta_{ij}
+\end{align}
+
+\subsection{角運動量演算子の交換関係}
+角運動量演算子は
+
+\begin{align}
+	\hat{L_x} &= \hat{y}\hat{p_z} - \hat{z}\hat{p_y} = -i\hbar\left( y\dfrac{\partial}{\partial z} - z\dfrac{\partial}{\partial y}\right) \\
+	\hat{L_y} &= \hat{z}\hat{p_x} - \hat{x}\hat{p_z} = -i\hbar\left( z\dfrac{\partial}{\partial x} - x\dfrac{\partial}{\partial z}\right) \\
+	\hat{L_z} &= \hat{x}\hat{p_y} - \hat{y}\hat{p_x} = -i\hbar\left( x\dfrac{\partial}{\partial y} - y\dfrac{\partial}{\partial x}\right)
+\end{align}
+交換関係は
+\begin{align}
+	[\hat{L_x},\hat{L_y}] &= i\hbar\hat{L_z} \\
+	[\hat{L_y},\hat{L_z}] &= i\hbar\hat{L_x} \\
+	[\hat{L_z},\hat{L_x}] &= i\hbar\hat{L_y}
+\end{align}
+である。
+実際に、
+\begin{align}
+	[\hat{L_x},\hat{L_y}]
+	&= [\hat{y}\hat{p_z} - \hat{z}\hat{p_y}, \hat{z}\hat{p_x} - \hat{x}\hat{p_z}] \\
+	&= [\hat{y}\hat{p_z},\hat{z}\hat{p_x}] - [\hat{y}\hat{p_z},\hat{x}\hat{p_z}] - [\hat{z}\hat{p_y},\hat{z}\hat{p_x}] + [\hat{z}\hat{p_y},\hat{x}\hat{p_z}] \\
+	&= (yp_z zp_x - zp_x yp_z) - (yp_z xp_z - xp_z yp_z) - (zp_y zp_x - zp_x zp_y) + (zp_y xp_z - xp_z zp_y) \\
+	&= y(-i\hbar)p_x - x(-i\hbar)p_y \\
+	&= i\hbar(xp_y - yp_x) \\
+	&= i\hbar\hat{L_z}
+\end{align}
+他も同様。
+
+また、
+\begin{equation}
+	\hat{L^2} = \hat{L_x^2} + \hat{L_y^2} + \hat{L_z^2}
+\end{equation}
+より、
+\begin{equation}
+	[\hat{L^2},\hat{L_x}] = [\hat{L^2},\hat{L_y}] = [\hat{L^2},\hat{L_z}] = 0
+\end{equation}
+実際に、
+\begin{align}
+	[\hat{L^2},\hat{L_x}]
+	&= [\hat{L_x^2} + \hat{L_y^2} + \hat{L_z^2},\hat{L_x}] \\
+	&= [\hat{L_x^2},\hat{L_x}] + [\hat{L_y^2},\hat{L_x}] + [\hat{L_z^2},\hat{L_x}] \\
+	&= \hat{L_y}[\hat{L_y},\hat{L_x}] + [\hat{L_y},\hat{L_x}]\hat{L_y} + \hat{L_z}[\hat{L_z},\hat{L_x}] + [\hat{L_z},\hat{L_x}]\hat{L_z} \\
+	&= -i\hbar L_yL_z -i\hbar L_zL_y + i\hbar L_zL_y + i\hbar L_yL_z \\
+	&= 0
+\end{align}
+他も同様。

@@ -1,0 +1,419 @@
+\documentclass[a4paper,16pt]{jsarticle}
+
+% 余白の設定
+\setlength{\textwidth}{\fullwidth}
+\setlength{\textheight}{40\baselineskip}
+\addtolength{\textheight}{\topskip}
+\setlength{\voffset}{-0.2in}
+\setlength{\topmargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt}
+
+% パッケージ
+\usepackage[dvipdfmx]{hyperref,graphicx}		% 画像
+\hypersetup{
+	colorlinks=true, % リンクに色をつけない設定
+	bookmarks=true, % 以下ブックマークに関する設定
+	bookmarksnumbered=true,
+	pdfborder={0 0 0},
+	bookmarkstype=toc
+}
+\usepackage{amsmath, amssymb}		% ギリシャ文字
+\usepackage{bm}				% 数式　\bm{a} aベクトル
+\usepackage{comment}			% コメント
+\usepackage{siunitx}			% SI単位
+\usepackage{framed}			% 枠組み
+\usepackage{braket}     % ブラケット記法
+
+\newtheorem{theorem}{定理}
+\newtheorem{proof}{証明}
+\newcommand{\qed}{\qquad $\blacksquare$}
+
+\begin{comment}
+　複数行に渡るコメントの書き方
+　\usepackage{comment}が必要。
+\end{comment}
+
+% section前に改ページ
+\makeatletter
+\def\section{\newpage\@startsection {section}{1}{\z@}{-3.5ex plus -1ex minus -.2ex}{2.3 ex plus .2ex}{\Large\bf}}
+\makeatother
+
+% 数式番号をいい感じに
+\makeatletter
+% \renewcommand{\theequation}{\arabic{chapter}-\arabic{section}-\arabic{equation}}
+	\renewcommand{\theequation}{\arabic{section}-\arabic{equation}}
+  \@addtoreset{equation}{section}
+\makeatother
+
+\title{量子力学}
+\author{ゆきちゃん}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+未来の自分が見返したときに、理解できるように書いています。
+間違い等あれば、気軽に教えてください。
+
+また、随時更新しています。書いている途中のもあります。
+
+\tableofcontents
+
+\newpage
+
+% \input{memo.tex}
+
+% \input{constant.tex}
+
+\begin{thebibliography}{99}
+	\bibitem{} 猪木・河合、量子力学I、講談社サイエンティフィク、2017
+	\bibitem{} 猪木・河合、量子力学II、講談社サイエンティフィク、2017
+\end{thebibliography}
+
+\input{time_independent_schrodinger.tex}
+
+\input{1dim_schrodinger_eq_propeties.tex}
+
+\input{inf_depth_well_potential.tex}
+
+\input{harmony_potential.tex}
+
+\input{harmony_and_operator.tex}
+
+\input{time_independent_1st_order_perturbation_theory.tex}
+
+\input{physical_quantity_and_operator.tex}
+
+% \section{3次元の角運動量}
+
+
+
+\section{極座標による3次元のシュレディンガー方程式(球対称なポテンシャル)}
+球対称なポテンシャル$V(x,y,z) = V(r)$の中を運動している粒子の定常状態のシュレディンガー方程式は
+\begin{equation}
+	\left[ -\dfrac{\hbar^2}{2m}\nabla^2 + V(r) \right ]\psi(x,y,z) = E \psi(x,y,z)
+\end{equation}
+ポテンシャルが球対称な場合、直交座標ではなく、極座標で考えた方が解きやすい。
+\begin{align}
+	x &= r\sin\theta\cos\varphi \\
+	y &= r\sin\theta\sin\varphi \\
+	z &= r\cos\theta \\
+	r^2 &= x^2 + y^2 + z^2 \\
+	0 \leq r \leq \infty, 0 &\leq \theta \leq \pi, 0 \leq \varphi \leq 2\pi
+\end{align}
+の関係を用いて、
+\begin{equation}
+	\label{polar_schrodinger_eq}
+	-\dfrac{\hbar^2}{2m}\left[
+	\dfrac{1}{r}\dfrac{\partial^2}{\partial r^2}r
+	+ \dfrac{1}{r^2\sin\theta}\dfrac{\partial}{\partial \theta}(\sin\theta)\dfrac{\partial}{\partial \theta}
+	+ \dfrac{1}{r^2\sin^2\theta}\dfrac{\partial^2}{\partial\varphi^2}
+	\right]\psi(r,\theta,\varphi)
+	+ V(r)\psi(r,\theta,\varphi)
+	= E\psi(r,\theta,\varphi)
+\end{equation}
+と書くことができる。複雑そうに見えるが変数分離形である。
+これを、$r$を含む部分と、$\theta$と$\varphi$を含む部分に分けるために、
+\begin{equation}
+	\label{RY}
+	\psi(r,\theta,\varphi) = R(r)Y(\theta,\varphi)
+\end{equation}
+とおく。これを(\ref{polar_schrodinger_eq})に代入して、$-\dfrac{2mr^2}{\hbar^2}$をかけると
+\begin{equation}
+	r\dfrac{\partial^2}{\partial r^2}(rR)Y + \left[
+	\dfrac{1}{\sin\theta}(\sin\theta\dfrac{\partial}{\partial\theta})
+	+ \dfrac{1}{\sin^2\theta}\dfrac{\partial^2}{\partial\varphi^2}
+	\right]RY + \dfrac{2mr^2}{\hbar^2}(E-V(r))RY = 0
+\end{equation}
+両辺を$RY$で割ると、
+\begin{equation}
+	\dfrac{r}{R}\dfrac{\partial^2}{\partial r^2}(rR) + \dfrac{2mr^2}{\hbar^2}(E-V(r))
+	= -\dfrac{1}{Y}\left[
+	\dfrac{1}{\sin\theta}(\sin\theta\dfrac{\partial Y}{\partial\theta})
+		+ \dfrac{1}{\sin^2\theta}\dfrac{\partial^2 Y}{\partial\varphi^2}
+	\right]
+\end{equation}
+となる。左辺は$r$について、右辺は$\theta$と$\varphi$について関係しているので、両辺は定数でなければならない。この定数を$\lambda$とおく。
+
+動径部分の方程式として
+\begin{equation}
+	\label{radius_eq}
+	\dfrac{1}{r^2}\dfrac{d^2}{d r^2}(rR) + \dfrac{2m}{\hbar^2}(E-V(r) - \dfrac{\lambda}{r^2})R = 0
+\end{equation}
+角部分の方程式として
+\begin{equation}
+	\label{angle_eq}
+	\dfrac{1}{\sin\theta}(\sin\theta\dfrac{\partial Y}{\partial\theta})
+		+ \dfrac{1}{\sin^2\theta}\dfrac{\partial^2 Y}{\partial\varphi^2} +\lambda Y = 0
+\end{equation}
+を得る。角部分の方程式はポテンシャル$V(r)$にも、エネルギー$E$にも関係がないことが分かる。
+また、角部分の方程式も変数分離形なので、
+\begin{equation}
+	Y(\theta,\varphi) = \Theta(\theta)\Phi(\varphi)
+\end{equation}
+とおくと、(\ref{angle_eq})に代入して整理すると、
+\begin{equation}
+	\sin\theta\dfrac{\partial}{\partial\theta}(\sin\theta\dfrac{d\Theta(\theta)}{d\theta})\dfrac{1}{\Theta(\theta)} + \lambda\sin^2\theta
+	= -\dfrac{1}{\Phi(\varphi)}\dfrac{d\Phi(\varphi)}{d\varphi}
+\end{equation}
+を得る。両辺は定数でなければならない。この定数を$m^2$とおく\footnote{粒子の質量ではない。}と、
+\begin{equation}
+	\label{Phi_eq}
+	\dfrac{1}{\Phi(\varphi)}\dfrac{d\Phi(\varphi)}{d\varphi} m^2\Phi(\varphi)= 0
+\end{equation}
+\begin{equation}
+	\label{Theta_eq}
+	\dfrac{1}{\sin\theta}\dfrac{d}{d\theta}(\sin\theta\dfrac{d\Theta(\theta)}{d\theta}) +(\lambda - \dfrac{m^2}{\sin^2\theta})\Theta(\theta) = 0
+\end{equation}
+となる。
+
+(\ref{Phi_eq})を解く。これは単振動と同じ形である。特殊解は
+\begin{equation}
+	\label{Phi_particular_solution}
+	\Phi(\varphi) = e^{im\varphi}
+\end{equation}
+である。これは多価関数である。固有関数は一価関数であるという要請をおくと、
+$\Phi(2\pi) = \Phi(0)$なので、特殊解(\ref{Phi_particular_solution})は$e^{2\pi im} = 1$
+を満たさなければならない。
+従って、
+\begin{equation}
+	m = 0, \pm 1, \pm 2, \cdots
+\end{equation}
+になる。$\int_0^{2\pi}\Phi^*\Phi d\varphi = 1$と規格化すると、
+\begin{equation}
+	\Phi_m(\varphi) = \dfrac{1}{\sqrt{2\pi}}e^{im\varphi},\quad (m = 0, \pm 1, \pm 2, \cdots)
+\end{equation}
+が(\ref{Phi_eq})の解である。
+
+次に(\ref{Theta_eq})を解く。
+$z = \cos\theta$と変数変換し、
+\begin{equation}
+	\Theta(\theta) \equiv P^m(z)
+\end{equation}
+とおくと、(\ref{Theta_eq})は、
+\begin{equation}
+	\frac{1}{dz}\left[ (1-z^2)\dfrac{dP^m}{dz}\right] + \left[ \lambda - \dfrac{m^2}{1-z^2}\right]P^m = 0
+\end{equation}
+となる。$ 0 \leq \theta \leq \pi$より、$-1 \leq z \leq 1$である。
+
+$m = 0$の時、これはlegendreの微分方程式(\ref{legendre_DE})である。
+このことから、$\lambda = l(l+1)$と分かる。($l$は非負整数)
+
+$m \neq 0$の時、legendreの微分方程式(\ref{legendre_DE})の解(\ref{legendre_polynomials})$P_l$を用いて、
+\begin{equation}
+	\label{general_legendre_function}
+	P_l^m = (1-z^2)^{\frac{|m|}{2}}\dfrac{d^{|m|}P_l(z)}{dz^{|m|}}
+\end{equation}
+となる。$P_l$は$l$次多項式なので、$|m| \leq l$である
+
+(\ref{general_legendre_function})をLegendreの陪関数と呼ぶ
+\subsection{球面調和関数}
+(\ref{Theta_eq})で$\lambda = l(l+1)$とした時の解は、(\ref{Phi_particular_solution})、(\ref{general_legendre_function})と規格化定数$N_{lm}$を使って、
+\begin{equation}
+	Y_l^m(\theta,\varphi) = N_{lm} P_l^m(\cos\theta)\Phi_m(\varphi)
+\end{equation}
+となる。これを球面調和関数と呼ぶ。
+
+規格化された球面調和関数は
+\begin{equation}
+	\label{spherical_harmonics}
+Y_l^m(\theta,\varphi) = \epsilon\sqrt{\dfrac{2l+1}{4\pi}\dfrac{(l-|m|)!}{(l+|m|)!}}P_l^m(\cos\theta)\Phi_m(\varphi)
+\end{equation}
+ただし、
+\begin{equation}
+	\epsilon =
+	\begin{cases}
+		(-1)^m  & (m > 0) \\
+		1 &  (m \leq 0)
+	\end{cases}
+\end{equation}
+また、
+\begin{equation}
+	\int_0^{2\pi}d\varphi\int_0^\pi (Y_l^m)^*Y_{l'}^{m'}\sin\theta d\theta
+	= \delta_{ll'}\delta_{mm'}
+\end{equation}
+と、直交関係を満たす。
+
+$Y_l^m$をいくつか書いておく。
+\begin{align}
+	Y_0^0 &= \dfrac{1}{\sqrt{4\pi}} \\
+	Y_1^0 &= \sqrt{\dfrac{3}{4\pi}}\cos\theta \\
+	Y_1^{\pm1} &= \mp\sqrt{\dfrac{3}{8\pi}}\sin\theta e^{\pm i\varphi} \\
+	Y_2^0 &= \sqrt{\dfrac{5}{4\pi}}\left( \dfrac{3}{2} \cos^2\theta - \dfrac{1}{2}\right) \\
+	Y_2^{\pm1} &= \pm \sqrt{\dfrac{15}{8\pi}}\sin\theta\cos\theta e^{\pm i\varphi} \\
+	Y_2^{\pm2} &= \sqrt{\dfrac{15}{32\pi}}\sin^2\theta e^{\pm2i\varphi}
+\end{align}
+
+\subsection{角運動量状態}
+古典力学では角運動量$\bm{L}$は運動量$\bm{p}$を用いて
+\begin{equation}
+	\bm{L} = \bm{r} \times \bm{p}
+\end{equation}
+量子力学では角運動量$\bm{\hat{L}}$は運動量$\bm{\hat{p}} = -i\hbar\nabla$を用いて
+\begin{equation}
+	\bm{\hat{L}} = \bm{\hat{r}} \times \bm{\hat{p}}
+\end{equation}
+と表せる。成分ごとに書くと
+\begin{align}
+	\hat{L_x} &= \hat{y}\hat{p_z} - \hat{z}\hat{p_y} = -i\hbar\left( y\dfrac{\partial}{\partial z} - z\dfrac{\partial}{\partial y}\right) \\
+	\hat{L_y} &= \hat{z}\hat{p_x} - \hat{x}\hat{p_z} = -i\hbar\left( z\dfrac{\partial}{\partial x} - x\dfrac{\partial}{\partial z}\right) \\
+	\hat{L_z} &= \hat{x}\hat{p_y} - \hat{y}\hat{p_x} = -i\hbar\left( x\dfrac{\partial}{\partial y} - y\dfrac{\partial}{\partial x}\right)
+\end{align}
+極座標に変換すると、
+\begin{align}
+	\hat{L_x} &= i\hbar\left( \sin\varphi\dfrac{\partial}{\partial \theta} + \dfrac{\cos\theta\cos\varphi}{\sin\theta}\dfrac{\partial}{\partial \varphi} \right) \\
+	\hat{L_y} &= -i\hbar\left( \cos\varphi\dfrac{\partial}{\partial \theta} - \dfrac{\cos\theta\sin\varphi}{\sin\theta}\dfrac{\partial}{\partial \varphi} \right) \\
+	\label{L_z}
+	\hat{L_z} &= -i\hbar \dfrac{\partial}{\partial \varphi}
+\end{align}
+となる。$\bm{\hat{L}}^2 = \hat{L_x^2} + \hat{L_y^2} + \hat{L_z^2}$より、
+\begin{equation}
+	\label{L^2}
+	\bm{\hat{L}}^2 = \hbar^2 \left[ \dfrac{1}{\sin\theta} \dfrac{\partial}{\partial \theta} \left( \sin\theta \dfrac{\partial}{\partial\theta} \right)
+	+ \dfrac{1}{\sin^2\theta}\dfrac{\partial^2}{\partial\varphi^2} \right]
+\end{equation}
+また、ここで、
+\begin{equation}
+	\hat{p_r} = -i\hbar\dfrac{1}{r}\dfrac{\partial}{\partial r}r
+\end{equation}
+を用意する。
+これを$2$乗すると、
+\begin{equation}
+	\label{p_r^2}
+	\hat{p_r^2} = -\hbar^2 \dfrac{1}{r}\dfrac{\partial^2}{\partial r^2}r
+\end{equation}
+となる。
+よって、(\ref{L^2})と(\ref{p_r^2})より、
+\begin{equation}
+	\label{p_rL^2}
+	\dfrac{\hat{p_r^2}}{2m} + \dfrac{ \bm{\hat{L}}^2 }{2mr^2} = -\dfrac{\hbar^2}{2m}\nabla^2
+\end{equation}
+
+ここで、(\ref{angle_eq})と(\ref{L^2})より、
+\begin{equation}
+	\label{L^2Y}
+	\hat{L^2}Y_l^m(\theta,\varphi) = l(l+1)\hbar^2 Y_l^m(\theta,\varphi)
+\end{equation}
+
+また、(\ref{L_z})と(\ref{Phi_particular_solution})より、
+\begin{equation}
+	\label{L_zY}
+	\hat{L_z}Y_l^m(\theta,\varphi) = m\hbar Y_l^m(\theta,\varphi)
+\end{equation}
+が得られる。
+
+球関数$Y_l^m(\theta,\varphi)$は、固有値$l(l+1)\hbar^2$をもつ角運動量の$2$乗の固有関数であり、
+同時に固有値$m\hbar$をもつ角運動量の$z$成分の固有関数でもある。
+
+(\ref{L^2Y})に出てくる量子数$l$を軌道角運動量量子数、
+(\ref{L_zY})に出てくる量子数$m$を軌道磁気量子数という。
+
+(\ref{p_rL^2})を用いて、極座標のシュレディンガー方程式(\ref{polar_schrodinger_eq})は
+\begin{equation}
+	\left[ \dfrac{\hat{p_r^2}}{2m} + \dfrac{ \bm{\hat{L}}^2 }{2mr^2} + V(r)\right]\psi = E\psi
+\end{equation}
+と書くことができる。
+これは、極座標におけるハミルトニアン$H$は
+\begin{equation}
+	\label{polar_H}
+	H = \dfrac{\hat{p_r^2}}{2m} + \dfrac{ \bm{\hat{L}}^2 }{2mr^2} + V(r)
+\end{equation}
+であることが分かる。
+
+ハミルトニアン$H$と角運動量演算子の交換関係は
+\begin{equation}
+	[\hat{H},\hat{L^2}] = [\hat{H},\hat{L_z}] = [\hat{L^2},\hat{L_z}] = 0
+\end{equation}
+である。
+ハミルトニアンが(\ref{polar_H})である系は、エネルギー$E$と角運動量の$2$乗$\hat{L^2}$と角運動量の$z$成分$\hat{L_z}$の値が決まっている定常状態を持つ。
+この定常状態の波動関数は$3$つの演算子$\hat{H}、\hat{L^2}、\hat{L_z}$の全ての同時固有状態である。
+
+
+
+
+\subsection{動径方程式}
+
+今、任意の球対称なポテンシャルの中で、$L^2$と$L_z$がきまった値をもつ粒子の定常状態の波動関数は
+(\ref{RY})と(\ref{spherical_harmonics})より
+\begin{equation}
+	\psi(r,\theta,\varphi) = R_l(r)Y_l^m(\theta,\varphi)
+\end{equation}
+となる。$Y_l^m$が$L^2$の固有関数なので$\lambda = l(l+1)$で、(\ref{radius_eq})より、$R_l$は
+\begin{equation}
+	\label{R_l}
+	\dfrac{1}{r^2}\dfrac{d^2}{d r^2}(rR_l(r)) + \dfrac{2m}{\hbar^2}(E-V(r) - \dfrac{l(l+1)}{r^2})R_l(r) = 0
+\end{equation}
+の解である。これをシュレディンガー方程式に似た形に変形したい。
+そのためには、
+\begin{equation}
+	R_l(r) = \dfrac{\chi_l(r)}{r}
+\end{equation}
+と置いて代入して整理すると、
+\begin{equation}
+	\label{R_l_Veff}
+	-\dfrac{\hbar^2}{2m}\dfrac{d^2 \chi_l(r)}{d r^2} + \left[V(r) +\dfrac{l(l+1)}{2mr^2}\right]\chi_l(r) = E\chi_l(r)
+\end{equation}
+
+これは、ポテンシャルエネルギー
+\begin{equation}
+	\label{Veff}
+	V_{eff}(r) = V(r) + \dfrac{l(l+1)}{2mr^2}
+\end{equation}
+の中$(0 \leq r \leq \infty)$で運動する$1$次元のシュレディンガー方程式と同じ形である。
+
+このポテンシャルの右辺第$2$項について考えてみよう。
+古典的な描像では、電子は原子核の周りを円運動していると見ることができる。
+そのため、遠心力が働いている。この遠心力は
+\begin{equation}
+	F = mr\omega^2 = m\dfrac{v^2}{r} = \dfrac{p^2}{mr} = \dfrac{(rp)^2}{mr^3} = \dfrac{L^2}{mr^3}
+\end{equation}
+この時のポテンシャルエネルギーは
+\begin{equation}
+	U = - \int_\infty^r F dr' = -\int_\infty^r \dfrac{L^2}{mr'^3} dr'
+	= \left[ \dfrac{L^2}{2mr'^2} \right]_\infty^r = \dfrac{L^2}{2mr^2}
+\end{equation}
+となる。
+角運動量の大きさ$|L|$が$l(l+1)\hbar$に等しい時、(\ref{Veff})の右辺の第$2$項に等しくなり、$l>0$の粒子が原点に近づくことを妨げる働きをすることが分かる。このことから、遠心力ポテンシャルと呼ばれる。
+
+「$1$次元問題では、離散スペクトルの現れるエネルギー準位は縮退していない」という性質が成立するので、
+(\ref{R_l_Veff}の解である波動関数の動径部分$R_l$はエネルギーを与えると完全に決まる。
+また、各部分は$l$と$m$の値によって完全に決まるので、球対称なポテンシャルの中を運動する粒子の波動関数は
+$E$と$l$と$m$の$3$つの値によって完全に決定できる。
+ただ、(\ref{R_l})は量子数$m$を含んでいないので、$E$と$l$だけを決めても、$(2l+1)$個の$m$の値に対応して$(2l+1)$重に縮退している。($m\leq l$かつ$m = 0, \pm1,\pm2,\pm3,\cdots$なので)
+
+また、波動関数を規格化条件は
+\begin{align}
+	\int_0^\infty	dr \int_0^\pi d\theta \int_0^{2\pi} d\varphi |\psi{r,\theta,\varphi}|^2 r^2 \sin\theta
+	&= \int_0^\infty dr \int_0^\pi d\theta \int_0^{2\pi} d\varphi |RY|^2 r^2 \sin\theta \\
+	&= \int_0^\infty dr |R|^2 r^2 \\
+	&= \int_0^\infty dr |\chi_l|^2
+\end{align}
+と、規格化条件も$1$次元のと同じ性質である。
+
+
+
+
+
+
+
+\section{水素原子}
+
+
+
+
+
+
+\input{orthogonal_polynomial.tex}
+
+
+
+
+
+
+% \section{諸々の証明}
+
+
+
+
+\end{document}

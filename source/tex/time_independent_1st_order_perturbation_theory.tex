@@ -1,0 +1,163 @@
+\section{時間に依存しない摂動論(縮退なし)1次}
+時間に依存しないシュレディンガー方程式
+\begin{equation*}
+	\label{time_independent_schrodinger_eq2}
+	- \dfrac{\hbar^2}{2m} \dfrac{d^2 \psi_n(x)}{d x^2} + V(x)\psi_n(x) = E_n\psi_n(x)
+\end{equation*}
+ハミルトニアン$H$を用いれば、
+\begin{equation}
+	H\psi_n = E_n\psi_n
+\end{equation}
+ブラ・ケット記法を用いると、
+\begin{equation}
+	H \ket{\psi_n} = E_n \ket{\psi_n}
+\end{equation}
+と表すことができる。
+
+今、ポテンシャルを二つに分離して
+\begin{equation}
+	V = V_0 + V'
+\end{equation}
+と書けるとして、ハミルトニアン$H$も
+
+\begin{equation}
+	H = H_0 + H'
+\end{equation}
+と分ける。ただし
+
+\begin{align}
+	H_0 &= -\dfrac{\hbar^2}{2m} \dfrac{d^2}{dx^2} + V_0 \\
+	H'  &= V'
+\end{align}
+とする。
+$H_0$を{\bf 非摂動ハミルトニアン}、$H'$を{\bf 摂動ハミルトニアン}という。
+
+ここで、
+\begin{equation}
+	\label{schrodinger_EQ}
+	(H_0 + \lambda H')\ket{\psi_n} = E_n\ket{\psi_n}
+\end{equation}
+とする。
+% ($\lambda$は後の議論で冪展開を導入するので、それを見やすくするもの。)
+
+$\lambda = 1$の時、元のハミルトニアン$H$に等しい。また、$\lambda \to 0$でハミルトニアン$H$は$H_0$になる。
+
+
+ここで、$H_0$に対するシュレディンガー方程式は解けていて、その時の固有エネルギーは$E_{n}^{(0)}$で、固有ベクトルは$\psi_{n}^{(0)}$であるとする。
+つまり、
+\begin{equation}
+	H_0 \ket{\psi_{n}^{(0)}} = E_{n}^{(0)}\ket{\psi_{n}^{(0)}}
+\end{equation}
+
+$\lambda$が十分小さければ$H$の固有エネルギー$E_{n}$と固有ベクトル$\psi_{n}$は$H_0$のものと少ししか違わないはずで、
+それらは$H_0$と滑らかに繋がるはず。そのため、以下のように冪展開で書けると仮定する。
+
+\begin{align}
+	\label{psi_n}
+	\psi_{n} &= \psi_{n}^{(0)}+\lambda \psi_{n}^{(1)}+\lambda^{2}\psi_{n}^{(2)}+\lambda^{3} \psi_{n}^{(3)}+\cdots \\
+	\label{E_n}
+		 E_{n} &= E_{n}^{(0)}+\lambda E_{n}^{(1)}+\lambda^{2} E_{n}^{(2)}+\lambda^{3} E_{n}^{(3)}+\cdots
+\end{align}
+この関数$\psi_n^{(k)}$は$\psi_n$の$k$乗でも$k$階微分でもなく、添え字$k$が違えば別の関数である。
+$E_n^{(k)}$も同様に、添え字$k$が違えば別の値である。
+
+(\ref{psi_n})、(\ref{E_n})をシュレディンガー方程式(\ref{schrodinger_EQ})に代入すると、
+
+\begin{equation}
+	\begin{split}
+		(H_0 + \lambda H')(\ket{\psi_n^{(0)}} + \lambda\ket{\psi_n^{(1)}} + \lambda^2\ket{\psi_n^{(2)}} + \cdots)\\
+		= (E_n^{(0)} + \lambda E_n^{(1)} + \lambda^2E_n^{(2)} + \cdots )(\ket{\psi_n^{(0)}} + \lambda \ket{\psi_n^{(1)}} + \lambda^2\ket{\psi_n^{(2)}} + \cdots)
+	\end{split}
+\end{equation}
+
+$\lambda$の各冪ごとに等しいので、
+\begin{equation}
+	\begin{array}{ll}
+		\lambda^0: & H_0\ket{\psi_n^{(0)}} = E_n^{(0)}\ket{\psi_n^{(0)}} \\
+		\lambda^1: & (H_0 - E_n^{(0)})\ket{\psi_n^{(1)}} = (E_n^{(1)} - H')\ket{\psi_n^{(0)}} \\
+		\lambda^2: & (H_0 - E_n^{(0)})\ket{\psi_n^{(2)}} = (E_n^{(1)} - H')\ket{\psi_n^{(1)}} + E_n^{(1)}\ket{\psi_n^{(0)}} \\
+		 					 & \vdots  \\
+		\lambda^k: & (H_0 - E_n^{(k)})\ket{\psi_n^{(2)}} = (E_n^{(1)} - H')\ket{\psi_n^{(k-1)}} + E_n^{(2)}\ket{\psi_n^{(k-2)}} + \cdots + E_n^{(k)}\ket{\psi_n^{(0)}}
+	\end{array}
+\end{equation}
+まず、エネルギーの1次補正項$E_n^{(1)}$を求める。$\lambda^1$の
+\begin{equation}
+	\label{lambda1}
+	(H_0 - E_n^{(0)})\ket{\psi_n^{(1)}} = (E_n^{(1)} - H')\ket{\psi_n^{(0)}}
+\end{equation}
+に左から$\bra{\psi_n^{(0)}}$をかけると
+\begin{equation}
+	\bra{\psi_n^{(0)}}(H_0 - E_n^{(0)})\ket{\psi_n^{(1)}} = \bra{\psi_n^{(0)}}(E_n^{(1)} - H')\ket{\psi_n^{(0)}}
+\end{equation}
+$\bra{\psi_n^{(0)}}(H_0 - E_n^{(0)}) = 0$より、左辺は$0$になるので、
+\begin{equation}
+	\bra{\psi_n^{(0)}} E_n^{(1)} \ket{\psi_n^{(0)}} = \bra{\psi_n^{(0)}} H' \ket{\psi_n^{(0)}}
+\end{equation}
+また、$\braket{\psi_n^{(0)}|\psi_m^{(0)}} = \delta_{nm}$なので、
+\begin{equation}
+	\label{result_En}
+	E_n^{(1)} = \bra{\psi_n^{(0)}} H' \ket{\psi_n^{(0)}}
+\end{equation}
+と、エネルギーの1次補正項$E_n^{(1)}$が求まった。
+
+次に、固有ベクトルの1次補正項$\ket{\psi_n^{(1)}}$を求める。まず、
+\begin{equation}
+	\label{psin1}
+	\psi_n^{(1)} = \sum_m c_m \ket{\psi_m^{(0)}}
+\end{equation}
+と展開できるので、(\ref{lambda1})に代入し、左から$\bra{\psi_k^{(0)}}~(k \neq n)$をかけると、
+\begin{equation}
+	\label{H0En}
+	\bra{\psi_k^{(0)}}(H_0 - E_n^{(0)}) \sum_m c_m \ket{\psi_m^{(0)}} = \bra{\psi_k^{(0)}}(E_n^{(1)} - H')\ket{\psi_n^{(0)}}
+\end{equation}
+$H_0\ket{\psi_m^{(0)}} = E_m^{(0)}\ket{\psi_m^{(0)}}$ということに気をつけて整理すると、
+\begin{equation}
+	\sum_m c_m (E_m^{(0)} - E_n^{(0)}) \braket{\psi_k^{(0)}|\psi_m^{(0)}} = - \bra{\psi_k^{(0)}} H' \ket{\psi_n^{(0)}} +  E_n^{(1)} \braket{\psi_k^{(0)}|\psi_n^{(0)}}
+\end{equation}
+ここで、$k \neq n$なので$\braket{\psi_k^{(0)}|\psi_n^{(0)}} = 0$より
+\begin{equation}
+	\sum_m c_m (E_m^{(0)} - E_n^{(0)}) \braket{\psi_k^{(0)}|\psi_m^{(0)}} = - \bra{\psi_k^{(0)}} H' \ket{\psi_n^{(0)}}
+\end{equation}
+$m \neq k$の時、$\braket{\psi_k^{(0)}|\psi_m^{(0)}} = 0$になってしまうので、$m = k$の時を考えればよいので、
+\begin{equation}
+	c_k (E_k^{(0)} - E_n^{(0)}) = - \bra{\psi_k^{(0)}} H' \ket{\psi_n^{(0)}}
+\end{equation}
+よって、$n \neq k$の時、
+\begin{equation}
+	c_k = - \dfrac{\bra{\psi_k^{(0)}} H' \ket{\psi_n^{(0)}}}{E_k^{(0)} - E_n^{(0)}}
+\end{equation}
+従って、固有ベクトルの1次補正項$\ket{\psi_n^{(1)}}$は
+\begin{equation}
+	\ket{\psi_n^{(1)}} = \sum_{m(\neq n)} \ket{\psi_n^{(0)}} \dfrac{\bra{\psi_k^{(0)}} H' \ket{\psi_n^{(0)}}}{E_n^{(0)} - E_k^{(0)}} + c_n\ket{\psi_n^{(0)}}
+\end{equation}
+と求まる。ここで、$c_n$は任意定数である。
+
+さて、どうして$c_n$が残ってしまったのか考えてみよう。
+これは、(\ref{psin1})の中の$\ket{\psi_n^{(0)}}$成分によって、(\ref{H0En})において$m = n$の時に$(H_0 - E_n^{(0)})\ket{\psi_n^{(0)}} = 0$
+になってしまう事が原因によって$c_n$が残ってしまうのだ。
+そのため、$\ket{\psi_n^{(1)}}$に$\ket{\psi_n^{(0)}}$の定数倍だけ不定性が残ってしまう。これで良いのだろうか？
+
+(\ref{psi_n})より、
+\begin{equation}
+	\ket{\psi_n} = \psi_{n}^{(0)}+\lambda \psi_{n}^{(1)} + \mathcal{O}(\lambda^2)
+\end{equation}
+と展開したことを思い出そう。
+これに$1+c\lambda$をかけたもの
+\begin{equation}
+	(1+c\lambda)\ket{\psi_n}
+\end{equation}
+もまた固有ベクトルである。
+これを計算すると、
+\begin{equation}
+	(1+c\lambda)\ket{\psi_n} = \psi_{n}^{(0)} + \lambda(\psi_{n}^{(1)} + c\psi_{n}^{(0)}) + \mathcal{O}(\lambda^2)
+\end{equation}
+となり、$\psi_{n}^{(1)}$に$\psi_{n}^{(0)}$の定数倍を加える不定性が残る。
+つまり、このような不定性が残るのは固有ベクトルの定数倍も固有ベクトルになるという性質から導かれることなので自然な出来事なのである。
+
+ところで、(\ref{E_n})より、
+\begin{align}
+	E_{n} &= E_{n}^{(0)}+\lambda E_{n}^{(1)} + \mathcal{O}(\lambda^2) \\
+				&= \braket{\psi_n^{(0)} | (H_0 + \lambda H') | \psi_n^{(0)}} + \mathcal{O}(\lambda^2) \\
+				&= \braket{\psi_n^{(0)} | H | \psi_n^{(0)}} + \mathcal{O}(\lambda^2)
+\end{align}
+となる。これより、摂動の1次までの精度であれば、$H_0$の固有ベクトルで$H$の期待値を取ることによって対応するエネルギー固有値を求める事ができる事が分かる。

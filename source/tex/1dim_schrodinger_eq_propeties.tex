@@ -1,0 +1,65 @@
+
+
+\section{1次元シュレディンガー方程式の性質(その1)} \label{1dim_schrodinger_eq_propeties}
+質量$m$の粒子が時間に依存しないポテンシャル$V(x)$で束縛されている時、この粒子の波動関数$\psi(x,t)$を決めることは、時間に依存しないシュレディンガー方程式
+\begin{equation}
+	- \dfrac{\hbar^2}{2m} \dfrac{d^2 \varphi(x)}{d x^2} V(x)= E\varphi(x)
+\end{equation}
+を解くことに帰着する。
+この解の性質の$1$つに
+{\bf $1$次元問題では、離散スペクトルの現れるエネルギー準位は縮退しない}
+がある。
+
+\begin{proof}
+	エネルギー準位が縮退していると仮定する。
+	つまり、異なる$2$つの波動関数$\varphi_1(x)$と$\varphi_2(x)$が同じエネルギー固有値$E$を持つ。この時、
+	\begin{align}
+		\dfrac{d^2 \varphi_1(x)}{dx^2} + \dfrac{2m}{\hbar^2}(E-V(x))\varphi_1(x) &= 0 \\
+		\dfrac{d^2 \varphi_2(x)}{dx^2} + \dfrac{2m}{\hbar^2}(E-V(x))\varphi_2(x) &= 0
+	\end{align}
+	を満たす。
+	それぞれ$\varphi_1$、$\varphi_2$で割ると、
+	\begin{equation}
+		\dfrac{1}{\varphi_1}\dfrac{d^2 \varphi_1}{dx^2} = \dfrac{2m}{\hbar^2}(E-V(x)) = \dfrac{1}{\varphi_2}\dfrac{d^2 \varphi_2}{dx^2}
+	\end{equation}
+	を得ることができる。
+	これより、
+	\begin{equation}
+		\dfrac{1}{\varphi_1}\dfrac{d^2 \varphi_1}{dx^2} = \dfrac{1}{\varphi_2}\dfrac{d^2 \varphi_2}{dx^2}
+	\end{equation}
+	となり、両辺に$\varphi_1 \varphi_2$をかけると
+	\begin{equation}
+		\dfrac{d^2 \varphi_1}{dx^2}\varphi_2 = \dfrac{d^2 \varphi_2}{dx^2}\varphi_1
+	\end{equation}
+	左辺に寄せると、
+	\begin{equation}
+		\dfrac{d^2 \varphi_1}{dx^2}\varphi_2 - \dfrac{d^2 \varphi_2}{dx^2}\varphi_1 = 0
+	\end{equation}
+	これを変形すると、
+	\begin{equation}
+		\dfrac{d}{dx}\left[ \dfrac{d\varphi_1}{dx}\varphi_2 - \dfrac{d\varphi_2}{dx}\varphi_1\right] = 0
+	\end{equation}
+	となる。両辺を積分すると、
+	\begin{equation}
+		\dfrac{d\varphi_1}{dx}\varphi_2 - \dfrac{d\varphi_2}{dx}\varphi_1 = (定数)
+	\end{equation}
+	となる。
+	今、粒子はポテンシャル$V$によって束縛されているので、無限遠で$\varphi_1 = \varphi_2 = 0$になる。
+	つまり、定数は$0$でなければならない。
+	従って、
+	\begin{equation}
+		\dfrac{1}{\varphi_1}\dfrac{d\varphi_1}{dx} = \dfrac{1}{\varphi_2}\dfrac{d \varphi_2}{dx}
+	\end{equation}
+	これを積分すると
+	\begin{equation}
+		\log\varphi_1 = \log\varphi_2 + 定数
+	\end{equation}
+	つまり、
+	\begin{equation}
+		\varphi_1 = \varphi_2 \times (定数)
+	\end{equation}
+	となり、$2$つの波動関数は本質的に同じものであることになる。
+	これは波動関数が異なると仮定したことに矛盾する。
+	よって、$1$次元問題では、離散スペクトルの現れるエネルギー準位は縮退しない。
+	\qed
+\end{proof}

@@ -1,0 +1,246 @@
+
+\section{調和振動子ポテンシャルと昇降演算子}
+再び調和振動子ポテンシャルだ。
+今回は、昇降演算子というものを用いて調和振動子ポテンシャルのシュレディンガー方程式
+\begin{equation}
+	\label{harmony_schrodinger_eq}
+	E\psi(x) = - \dfrac{\hbar^2}{2m} \dfrac{d^2 \psi(x)}{d x^2} + \dfrac{1}{2}m\omega x^2\psi(x)
+\end{equation}
+を解く。それから、求めた波動関数の規格化もする。
+以前と同様に無次元の量
+
+\begin{align}
+		\label{y}
+		y &= \sqrt{\dfrac{m\omega}{\hbar}}x \\
+		\label{eps}
+		\epsilon &= \dfrac{2E}{\hbar\omega}
+\end{align}
+を導入して、
+\begin{equation}
+	\label{harmony_DE}
+\left( -\dfrac{d^2}{d y^2} + y^2 \right) \psi(y) = \epsilon\psi(y)
+\end{equation}
+ここで、{\bf 昇降演算子}
+\begin{align}
+	\label{U}
+	U &= \dfrac{d}{dy} - y \\
+	\label{D}
+	D &= \dfrac{d}{dy} + y
+\end{align}
+を定義する。
+
+この演算子$U、D$の性質を見ていこう。
+任意の関数$f$に対して、積$UD$は
+\begin{align}
+	UDf &= \left( \dfrac{d}{dy} - y \right)\left( \dfrac{d}{dy} + y \right)f \\
+			&= \dfrac{d^2f}{d^2} + \dfrac{d}{dy}(yf) - y\dfrac{df}{dy} - y^2 f \\
+			&= \dfrac{d^2f}{d^2} + f +  y\dfrac{df}{dy} - y\dfrac{df}{dy} - y^2 f \\
+			&= \dfrac{d^2f}{d^2} -y^2 f + f \\
+			&= \left( \dfrac{d^2}{d^2} -y^2 + 1\right)f
+\end{align}
+ハミルトニアン$H = -\dfrac{d^2}{d^2} + y^2$を用いて
+\begin{equation}
+	\label{UD}
+	UD = -H + 1
+\end{equation}
+同様に、積$DU$は
+\begin{equation}
+	\label{DU}
+	DU = -H - 1
+\end{equation}
+となる。つまり、演算子$U、D$は非可換である。なので、演算の順序には注意しなければならない。
+
+次に、(\ref{UD})に左から$D$を作用させる。
+\begin{equation}
+	DUD = D(-H+1) = -DH + D
+\end{equation}
+(\ref{DU})より、
+\begin{equation}
+	(-H-1)D = -HD-D = -DH + D
+\end{equation}
+よって、
+\begin{equation}
+	\label{DH}
+	DH = HD + 2D
+\end{equation}
+シュレディンガー方程式(\ref{harmony_DE})をハミルトニアン$H$を用いて、
+\begin{equation}
+	\label{Hpsi}
+	H\psi = \epsilon\psi
+\end{equation}
+これに、左から$D$を作用させると
+\begin{equation}
+		DH\psi = D\epsilon\psi
+							= \epsilon D \psi
+\end{equation}
+(\ref{DH})より、
+\begin{equation}
+	(HD + 2D)\psi = \epsilon D \psi
+\end{equation}
+よって、
+\begin{equation}
+	H(D\psi) = (\epsilon-2)(D\psi)
+\end{equation}
+これは、$D\psi$という波動関数が同じハミルトニアン$H$に対して、$\epsilon-2$という$2$だけ小さい固有値を持つ固有関数であることを示している。
+
+同様の操作をすると
+\begin{equation}
+	H(D^2\psi) = (\epsilon-4)(D^2\psi)
+\end{equation}
+になることが確認できる。
+一般的に、
+\begin{equation}
+	H(D^n\psi) = (\epsilon-2n)(D^n\psi)
+\end{equation}
+同様に、
+\begin{equation}
+	H(U^n\psi) = (\epsilon+2n)(U^n\psi)
+\end{equation}
+以上のことより、
+$D$を作用させると、現在の固有値より$2$だけ小さい固有値と対応する固有関数$D\psi$を、
+$U$を作用させると、現在の固有値より$2$だけ大きい固有値と対応する固有関数$U\psi$を、
+求める事ができる。
+これが昇降演算子の性質である。
+
+この性質を用いて、調和振動子ポテンシャルのエネルギー固有値と対応する固有関数(波動関数)を求めていく。
+
+基底状態のエネルギーを$\epsilon_0$、この時の固有関数を$\psi_0$とすると、
+\begin{equation}
+	H\psi_0 = \epsilon_0\psi_0
+\end{equation}
+これに左から$D$を作用させて整理すると、
+\begin{equation}
+	H(D\psi_0) = (\epsilon_0 - 2)(D\psi_0)
+\end{equation}
+となるが、$\epsilon_0$は基底状態のエネルギーなので、これ以上小さくなることはない。
+つまり、
+\begin{equation}
+	\label{D}
+	D\psi_0 = 0
+\end{equation}
+である必要がある。また、これに左から$U$を作用させて(\ref{UD})を使うと
+\begin{equation}
+	UD\psi_0 = (-H+1)\psi_0 = 0
+\end{equation}
+つまり、
+\begin{equation}
+	H\psi_0 = \psi_0
+\end{equation}
+このことから、基底状態のエネルギー$\epsilon_0 = 1$とわかる。
+また、$U$を作用させるとエネルギーが$2$増えるので、$\epsilon_1 = 1+2$、$\epsilon_2 = 1+4$、$\ldots$となるので
+\begin{equation}
+  \label{eps_requirement2}
+  \epsilon_n = 2n + 1
+\end{equation}
+となる事がわかる。
+
+基底状態のエネルギーが求まったので、対応する固有関数を求める。
+微分方程式(\ref{D})
+\begin{equation}
+	D\psi_0 = \left( \dfrac{d}{dy} +1 \right)\psi_0 = 0
+\end{equation}
+を解けば良い。
+これは変数分離を用いると簡単に解く事ができて、解は
+\begin{equation}
+	\psi_0 = Ce^{\frac{-y^2}{2}}
+\end{equation}
+となる。($C$は任意定数)
+
+さて、基底状態の波動関数が求まったので、規格化しよう。
+\begin{equation}
+	\int_{-\infty}^\infty |\psi_0|^2 dx = |C|^2 \int_{-\infty}^\infty e^{\frac{-y^2}{2}} dx = 1
+\end{equation}
+より、$C$を決定すれば良い。
+(\ref{y})より
+\begin{equation}
+	|C|^2 \int_{-\infty}^\infty e^{\frac{-y^2}{2}} dx = |C|^2 \int_{-\infty}^\infty e^{\frac{-y^2}{2}} \sqrt{\dfrac{\hbar}{m\omega}}dy
+	= |C|^2\sqrt{\dfrac{\hbar}{m\omega}}\sqrt{\pi} = 1
+\end{equation}
+よって、
+\begin{equation}
+	C = \left( \dfrac{m\omega}{\hbar\pi} \right)^\frac{1}{4}
+\end{equation}
+従って、規格化された基底状態の波動関数は、
+\begin{equation}
+	\psi_0(y) = \left( \dfrac{m\omega}{\hbar\pi} \right)^\frac{1}{4}e^{\frac{-y^2}{2}}
+\end{equation}
+
+励起状態の波動関数は$U$を作用させてやれば求まる。
+実際に、
+\begin{align}
+	\psi_1 &= U\psi_0 \\
+				 &= \left( \dfrac{m\omega}{\hbar\pi} \right)^\frac{1}{4}\left(\dfrac{d}{dy} - y\right)e^{\frac{-y^2}{2}} \\
+				 &= \left( \dfrac{m\omega}{\hbar\pi} \right)^\frac{1}{4}\left( -2ye^{\frac{-y^2}{2}} \right)
+\end{align}
+\begin{align}
+	\psi_2 &= U\psi_1 \\
+				 &= \left( \dfrac{m\omega}{\hbar\pi} \right)^\frac{1}{4}\left(\dfrac{d}{dy} - y\right)\left( -2ye^{\frac{-y^2}{2}} \right) \\
+				 &= \left( \dfrac{m\omega}{\hbar\pi} \right)^\frac{1}{4}\left( 4y^2 -2 \right)e^{\frac{-y^2}{2}}
+\end{align}
+である。エルミート多項式で求めた結果と同じになる事が確認できる。
+
+ここで励起状態の波動関数を規格化していこう。
+
+$n$番目の規格化された波動関数を$\psi_n$とする。すると、上昇演算子$U$によって、
+\begin{equation}
+	U\psi_n = C\psi_{n+1}
+\end{equation}
+となる。
+ここで、$\psi_{n+1}$も規格化されているとすると、
+\begin{equation}
+	|C|^2 \int_{-\infty}^\infty |\psi_{n+1}|^2 dx = |C|^2 = 1
+\end{equation}
+つまり、
+\begin{equation}
+	\int_{-\infty}^\infty (U\psi_n)^*(U\psi_n)dx = |C|^2 = 1
+\end{equation}
+左辺の積分を計算していく。(\ref{y})と(\ref{U})より、
+\begin{equation}
+	\sqrt{\dfrac{\hbar}{m\omega}}\int_{-\infty}^\infty (\dfrac{d\psi_n^*}{dy} -y\psi_n^*)(U\psi_n)dy
+	= \sqrt{\dfrac{\hbar}{m\omega}}\int_{-\infty}^\infty \left[ \dfrac{d\psi_n^*}{dy}(U\psi_n) -y\psi_n^*(U\psi_n) \right]dy
+\end{equation}
+部分積分より、
+\begin{equation}
+	= \sqrt{\dfrac{\hbar}{m\omega}}[\psi_n^* U \psi_n ]_{-\infty}^\infty
+		- \sqrt{\dfrac{\hbar}{m\omega}}\int_{-\infty}^\infty \left[ \psi_n^*\dfrac{d}{dy}(U\psi_n) -y\psi_n^*(U\psi_n)\right]dy
+\end{equation}
+$y \to \pm\infty$の時$\psi_n \to 0$なので、
+\begin{equation}
+	= \sqrt{\dfrac{\hbar}{m\omega}}\int_{-\infty}^\infty \left[ \psi_n^*\dfrac{d}{dy}(U\psi_n) -y\psi_n^*(U\psi_n)\right]dy
+	=  -\sqrt{\dfrac{\hbar}{m\omega}}\int_{-\infty}^\infty \psi_n^* \left(\dfrac{d}{dy} + y\right)U\psi_n dy
+\end{equation}
+(\ref{D})より、
+\begin{equation}
+	= -\sqrt{\dfrac{\hbar}{m\omega}}\int_{-\infty}^\infty \psi_n^* DU\psi_n dy
+\end{equation}
+(\ref{DU})より、
+\begin{equation}
+	= -\sqrt{\dfrac{\hbar}{m\omega}}\int_{-\infty}^\infty \psi_n^* (-H-1)\psi_n dy
+\end{equation}
+(\ref{Hpsi})と(\ref{eps_requirement2})より、$DU\psi = -2(n+1)\psi$を用いて、
+\begin{equation}
+	= (2n+1)\sqrt{\dfrac{\hbar}{m\omega}}\int_{-\infty}^\infty \psi_n^*\psi_n dy
+\end{equation}
+(\ref{y})を使って、
+\begin{equation}
+	= (2n+1)\int_{-\infty}^\infty \psi_n^*\psi_n dx
+\end{equation}
+$\psi_n$は規格化されているので、
+\begin{equation}
+	= 2n+1
+\end{equation}
+従って、
+\begin{equation}
+	|C|^2 = 2n+1
+\end{equation}
+よって、
+\begin{equation}
+	C = \sqrt{2n+1}
+\end{equation}
+を得る。
+
+以上より、規格化された波動関数$\psi_n$は
+\begin{equation}
+\psi_{n}=\frac{1}{\sqrt{2 n}} U \psi_{n-1}=\frac{1}{\sqrt{2^{2} n(n-1)}}(U)^{2} \psi_{n-2} \cdots=\frac{1}{\sqrt{2^{n} n !}}(U)^{n} \psi_{0}
+\end{equation}
+と求める事ができる。

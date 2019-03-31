@@ -1,0 +1,105 @@
+
+\section{無限に深い1次元井戸型ポテンシャル}
+無限に深い$1$次元井戸型ポテンシャルというものを考えてみよう。これはポテンシャル$V(x)$が
+\begin{equation}
+	V(x) =
+	\begin{cases}
+		0,       & (-a < x < a) \\
+		\infty , & (x \leq -a , a \leq x)
+	\end{cases}
+\end{equation}
+となっている。
+$x \leq -a , a \leq x$でポテンシャルが無限大なので、この範囲で粒子は存在できない。
+そのため、$-a < x < a$の範囲で時間に依存しないシュレディンガー方程式
+\begin{equation}
+	\label{time_independent_schrodinger_eq_in_well}
+	- \dfrac{\hbar^2}{2m} \dfrac{d^2 \psi(x)}{d x^2} = E\psi(x)
+\end{equation}
+を解けばよい。
+ここで、$x \leq -a , a \leq x$の範囲で粒子が存在できないことから、
+境界条件
+\begin{equation}
+	\label{boundary_req}
+	\psi(a) = \psi(-a) = 0
+\end{equation}
+を課すことになる。
+(\ref{time_independent_schrodinger_eq_in_well})を変形して
+\begin{equation}
+	\dfrac{d^2 \psi(x)}{d x^2} = -\dfrac{2mE}{\hbar^2}\psi(x)
+\end{equation}
+ここで、
+\begin{equation}
+	\label{k_equiv}
+	k \equiv \dfrac{\sqrt{2mE}}{\hbar}
+\end{equation}
+とおけば
+\begin{equation}
+		\dfrac{d^2 \psi(x)}{d x^2} = -k^2\psi(x)
+\end{equation}
+となり、この微分方程式を解けばよい。
+一般解は
+\begin{equation}
+	\psi(x) = A\cos(kx) + B\sin(kx)
+\end{equation}
+となる。($A$、$B$は任意定数である。)
+
+ここで、境界条件(\ref{boundary_req})より
+\begin{align}
+	A\cos(ka) + B\sin(ka) &= 0 \\
+	A\cos(kx) - B\sin(kx) &= 0
+\end{align}
+これより、
+\begin{align}
+	A\cos(ka) &= 0 \\
+	B\sin(ka) &= 0
+\end{align}
+が得られる。この条件を満たす解として$A=B=0$があるが、この時の波動関数$\psi(x)$は恒等的に$0$になるので、物理的に意味のない解になる。(つまり、粒子が存在しない状態になる。)
+
+物理的に意味のある解を求めていこう。
+
+$A = 0$の時、$B \neq 0$より
+\begin{equation}
+	\sin(ka) = 0
+\end{equation}
+つまり、
+\begin{equation}
+	ka = \dfrac{(n+1)\pi}{2}, \quad(n = 1, 3, 5, \ldots)
+\end{equation}
+
+$B = 0$の時、$A \neq 0$より
+\begin{equation}
+	\cos(ka) = 0
+\end{equation}
+つまり、
+\begin{equation}
+	ka = \dfrac{(n+1)\pi}{2}, \quad(n = 0, 2, 4, \ldots)
+\end{equation}
+
+従って、
+\begin{equation}
+	k = \dfrac{(n+1)\pi}{2a}, \quad(n = 0, 1, 2, \ldots)
+\end{equation}
+となる。
+ここで、(\ref{k_equiv})より
+\begin{equation}
+	E = \dfrac{(n+1)^2\pi^2\hbar^2}{8ma^2}, \quad(n = 0,1,2,\ldots)
+\end{equation}
+と固有エネルギー$E$が求まる。
+
+さて、固有状態の波動関数は
+\begin{align}
+	\psi(x) &= A\cos{\dfrac{(n+1)\pi}{2a}x}, \quad(n = 0, 2, 4, \ldots) \\
+	\psi(x) &= B\sin{\dfrac{(n+1)\pi}{2a}x}, \quad(n = 1, 3, 5, \ldots)
+\end{align}
+と求まる。$n$が偶数の場合は、波動関数も偶関数であり、$n$が奇数の場合は、波動関数も奇関数であることが分かる。
+
+定数$A$、$B$は波動関数の規格化定数である。
+\begin{equation}
+	1=\int_{-a}^{a} A^{2} \cos ^{2} k x \mathrm{d} x=A^{2} a, \quad
+	1=\int_{-a}^{a} B^{2} \sin ^{2} k x \mathrm{d} x=B^{2} a
+\end{equation}
+より、
+\begin{equation}
+	A = B = \dfrac{1}{\sqrt{a}}
+\end{equation}
+と求めることができる。
