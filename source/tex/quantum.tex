@@ -405,10 +405,10 @@ $Y_l^m$をいくつか書いておく。
 	-\dfrac{\hbar}{i}(0以上) - \int_0^\infty \dfrac{\hbar}{i} (0以上) dr
 \right]
 \end{equation}
-と分かるので、[]の中身が$0$になることはない。
+と分かるので、[~]の中身が$0$になることはない。
 なので、(\ref{p_r_tmp})はエルミートではないことが分かる。
 となると、(\ref{p_r})がエルミートである必要がある。
-同様に内積を計算すると、
+同様に内積を計算し、波動関数が規格化できるということから無限遠で$0$になることを課すと
 \begin{equation}
 	(\psi^*,p_r\psi)-((\psi p_r)^*,\psi) = \int_0^\pi d\theta \int_0^{2\pi} d\varphi \times
 \left[
@@ -422,7 +422,7 @@ $Y_l^m$をいくつか書いておく。
 	\lim_{r \to 0} r\psi = 0
 \end{equation}
 が成立すれば(\ref{p_r})はエルミート演算子であり、動径$r$に共役な運動量演算子である。
-
+これが波動関数$\psi$が原点で満たすべき条件となる。
 
 
 \subsection{動径方程式}
@@ -482,15 +482,93 @@ $E$と$l$と$m$の$3$つの値によって完全に決定できる。
 	&= \int_0^\infty dr |R|^2 r^2 \\
 	&= \int_0^\infty dr |\chi_l|^2
 \end{align}
-と、規格化条件も$1$次元のと同じ性質である。
+と、規格化条件も$1$次元のと同じ性質である。この積分は有限になるため、波動関数は無限遠で
+\begin{equation}
+	\lim_{r \to \infty} \chi(r) = \lim_{r \to \infty} rR(r) = 0
+\end{equation}
+となる。つまり、$R$は$r^{-1}$より速く$0$に収束しなければならないことが分かる。
 
+今、波動関数$\psi = R_lY_l^m$に課される条件は(\ref{psi_boundary_reauire})である。
+動径$r$に依存する部分だけを見れば
+\begin{equation}
+	\label{normalization_requaire}
+	\lim_{r \to 0}rR_l(r) = \lim_{r \to 0}\chi_l(r) = 0
+\end{equation}
+と分かる。
+つまり、$\chi_l(r)$の原点での振る舞いを調べることで、$\psi$が本当にシュレディンガー方程式(\ref{polar_schrodinger_eq})の解になっているかどうかを確かめられる。
+今、$l \neq 0$として
+波動関数$\chi_l$とポテンシャル$V(r)$が原点付近で冪級数に展開できるとする。
+\begin{align}
+	\chi_l(r) &= r^\alpha\sum_{k=0}^\infty a_kr^k ~ (a_0 \neq 0) \\
+	V(r) &= r^\beta\sum_{k'=0}^\infty V_{k'}r^{k'} ~ (\beta > -2)
+\end{align}
+これを(\ref{R_l_Veff})に代入して整理すると、
+\begin{equation}
+	\dfrac{\hbar^2}{2m}\sum_{k=0}^\infty a_k
+	\left[
+		-(\alpha+k)(\alpha+k-1) + \dfrac{l(l+1)}{2m}
+	\right]r^{k+\alpha-2}
+	+ \sum_{k=0}^\infty \sum_{k'=0}^\infty V_{k'}a_k r^{\alpha+\beta+k+k'}
+	= E\sum_{k=0}^\infty a_k r^{k+\alpha}
+\end{equation}
+となる。ここで$r$の最低次の項を考える。
 
+左辺の最低次の項は$k = 0$の時の$r^{\alpha-2}$の項である。というのも、ポテンシャル$V(r)$から生じる部分は
+$k = k' = 0$の時$r^{\alpha+\beta}$となるが、$\beta > 2$という条件があるので、$r^{\alpha+\beta}$は$r^{\alpha-2}$より高次になるためだ。
 
+右辺の最低次の項は$k = 0$の時の$r^\alpha$の項である。
 
+この$k = k' = 0$時を考えると
+\begin{equation}
+	\dfrac{\hbar^2}{2m}a_0 [-\alpha(\alpha-1)+l(l+1)]r^{\alpha-2} + V_0a_0r^{\alpha+\beta} = Ea_0r^\alpha
+\end{equation}
+ここで、$r^{\alpha-2}$が最低次の項であるため、原点付近ではそれ以外の次数が高い項は無視できると考えられる。
+つまり、
+\begin{equation}
+	\dfrac{\hbar^2}{2m}a_0 [-\alpha(\alpha-1)+l(l+1)]r^{\alpha-2} = 0
+\end{equation}
+従って、$a_0 \neq 0$なので
+\begin{equation}
+	\alpha(\alpha-1) = l(l+1)]r^{\alpha-2}
+\end{equation}
+これの解は$\alpha = -l$もしくは$\alpha = l+1$である。
+ゆえに、
+\begin{equation}
+	\chi_l(r) \approx r^{-l},~もしくは~r^{l+1}
+\end{equation}
+$r^{-l}$は原点で発散してしまうので、規格化条件(\ref{normalization_requaire})を満たさない。
+一方で、$r^{l+1}$は規格化条件(\ref{normalization_requaire})を満たす。
+なので、$\alpha = l+1$の時、つまり、$\chi_l(r) \approx r^{l+1}$と振る舞う解のみが物理的に許される。
+\begin{equation}
+	\chi_l(0) = 0
+\end{equation}
+となる。
+さて、これまでは$l \neq 0$の時を考えてきたが、$l = 0$の時はどうなるだろうか？
+
+実は、$l=0$の時でも原点付近で$\chi_0(0) = 0$になる。
+\begin{proof}
+	$\chi_0(0) = c \neq 0$と仮定する。
+
+	すると、原点付近で$R_0(r) = \frac{c}{r}$なので、これを$\psi = R_0Y_0^0$に代入すると
+	\begin{equation}
+		\psi = \dfrac{c}{\sqrt{4\pi}}\dfrac{1}{r}
+	\end{equation}
+	よって、
+	\begin{align}
+		\hat{H}\psi &= \left[-\dfrac{\hbar^2}{2m}\nabla^2 + V(r)\right]\psi \\
+		&= \left[ -\dfrac{\hbar^2}{2m}\dfrac{2}{r^2} + V(r)\right]\psi
+	\end{align}
+	となる。しかし、シュレディンガー方程式は$\hat{H}\psi = E\psi$と$\psi$に関して斉次であるが、これは斉次ではない。
+	仮定$\chi_0(0) = c \neq 0$によって矛盾が生じてしまったので、$\chi_0(0) = 0$である。
+	\qed
+\end{proof}
+
+よって、以上のことから、
+{\bf 原点における条件$\chi_l(r = 0)(l = 0,1,2,\cdots)$を$1$次元の動径方程式(\ref{radius_eq})に課して解くことで、
+球対称なポテンシャルの中を運動している粒子の$3$次元シュレディンガー方程式を解くことと同等になる。}
+ということがわかる。
 
 \section{水素原子}
-
-
 
 
 
