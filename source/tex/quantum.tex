@@ -568,6 +568,77 @@ $r^{-l}$は原点で発散してしまうので、規格化条件(\ref{normaliza
 球対称なポテンシャルの中を運動している粒子の$3$次元シュレディンガー方程式を解くことと同等になる。}
 ということがわかる。
 
+ハミルトニアン(\ref{polar_H})は$2$個の固有値$\pm1$を持つ空間反転演算子$\hat{P}$と交換する。
+空間反転演算子$\hat{P}$は
+\begin{equation}
+	\hat{P}\psi(\bm{r},t) = \psi(-\bm{r},t)
+\end{equation}
+と波動関数に作用すると定義される。
+$\hat{P}$の演算に対して、動径$r$は不変だが、角度については$\theta \to \pi - \theta,~\varphi \to \varphi + \pi$
+と変換される。
+
+中心力ポテンシャル$V(r)$の中で質量$m$の粒子が束縛されているとする。この時、与えられた角運動量$l$の値に対して許される最低エネルギー固有値
+$E_l^{(0)}$は、$l$の増大とともに大きくなる。
+これは、角運動量があるとハミルトニアンに$\dfrac{l(l+1)\hbar^2}{2mr^2}$という正符号の項が付け加えられ、これが$l$とともに増大することに起因する。
+ハミルトニアンを
+\begin{equation}
+	\label{H_l}
+	\hat{H_l} = -\dfrac{\hbar^2}{2m}\dfrac{d^2}{dr^2} + \left[ V(r) + \dfrac{l(l+1)\hbar^2}{2mr^2} \right]
+\end{equation}
+とおき、この時の最低固有値を$E_l^{(0)}$、固有関数を$\chi_l^{(0)}$とおく。(\ref{H_l})より
+\begin{equation}
+	\hat{H_{l+1}} = \hat{H_l} + \dfrac{(l+1)\hbar^2}{mr^2}
+\end{equation}
+となるので、
+\begin{align}
+	E_{l+1}^{(0)}
+	&= \int {\chi_{l+1}^{(0)}}^* \hat{H_{l+1}} \chi_{l+1}^{(0)} d^3r \\
+	\label{chiHchi}
+	&= \int {\chi_{l+1}^{(0)}}^* \hat{H_l} \chi_{l+1}^{(0)} d^3r + \int \dfrac{(l+1)\hbar^2}{mr^2} {\chi_{l+1}^{(0)}}^* \chi_{l+1}^{(0)} d^3r
+\end{align}
+ここで、$\hat{H_l}$の固有関数を$\chi_l^{(k)}$とおくと、$\hat{H_l}\chi_l^{(k)} = E_l^{(k)}\chi_l^{(k)}~(k\neq 0は励起状態)$
+
+$\chi_{l+1}^{(0)}$を完全系$\{\chi_l^{(k)}\}$で展開すると、
+\begin{equation}
+	\chi_{l+1}^{(0)} = \sum_k c_k \chi_l^{(k)},~~~\sum_k |c_k|^2 = 1
+\end{equation}
+これを(\ref{chiHchi})の第$1$項に代入して計算すると
+\begin{align}
+	\int {\chi_{l+1}^{(0)}}^* \hat{H_l} \chi_{l+1}^{(0)} d^3r
+	&= \sum_k |c_k|^2 E_l^{(k)}
+\end{align}
+ここから、最低固有値$E_l^{(0)}$を引くと
+\begin{align}
+	\sum_k |c_k|^2 E_l^{(k)} - E_l^{(0)}
+	&= \sum_k |c_k|^2 E_l^{(k)} - E_l^{(0)}\sum_k|c_k|^2 \\
+	&= \sum_k |c_k|^2(E_l^{(k)} - E_l^{(0)}) > 0
+\end{align}
+つまり、
+\begin{equation}
+	\int {\chi_{l+1}^{(0)}}^* \hat{H_l} \chi_{l+1}^{(0)} d^3r > E_l^{(0)}
+\end{equation}
+また、(\ref{chiHchi})の第$2$項が正であるので、
+\begin{equation}
+	E_{l+1}^{(0)} > E_{l}^{(0)}
+\end{equation}
+ということが分かる。
+従って、
+\begin{equation}
+	E_{0}^{(0)} < E_{1}^{(0)} < E_{2}^{(0)} < \cdots < E_{l}^{(0)} < E_{l+1}^{(0)} < \cdots
+\end{equation}
+である。
+
+粒子の角運動量$l$が様々な値をとる状態を表すために、以下のような慣用記号が使われる。
+\begin{table}[htb]
+	\begin{center}
+	\begin{tabular}{cccccccc}
+		$l=$     & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $\cdots$ \\
+		に対応して & $s$ & $p$ & $d$ & $f$ & $g$ & $h$ & $\cdots$
+	\end{tabular}
+	\end{center}
+\end{table}
+これより、中心力ポテンシャルの中を運動する粒子の基底状態は$s$状態であると分かる。
+
 \section{水素原子}
 
 
