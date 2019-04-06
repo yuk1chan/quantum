@@ -637,23 +637,184 @@ $\chi_{l+1}^{(0)}$を完全系$\{\chi_l^{(k)}\}$で展開すると、
 	\end{tabular}
 	\end{center}
 \end{table}
+
 これより、中心力ポテンシャルの中を運動する粒子の基底状態は$s$状態であると分かる。
+
+\section{2体問題 - 重心運動の分離}
+	シュレディンガー方程式は$1$個の粒子の運動を記述するものである。
+	では、$2$つの粒子の場合にはどうすれば良いだろうか。
+\subsection{古典力学での重心運動の分離}
+$2$つの粒子の質量を$m_1, m_2$、位置を$\bm{r_1},\bm{r_2}$とする。この$2$粒子系のラグランジアン$L$は
+\begin{equation}
+	\label{L}
+	L = \dfrac{m_1}{2}\dot{\bm{r_1}}^2 + \dfrac{m_2}{2}\dot{\bm{r_2}}^2 - V(|\bm{r_1} - \bm{r_2}|)
+\end{equation}
+となる。また、対応する運動量は
+\begin{align}
+	\bm{p_1} &= m_1\dot{\bm{r_1}} \\
+	\bm{p_2} &= m_2\dot{\bm{r_2}}
+\end{align}
+となる。
+ここで、$\bm{r_1},\bm{r_2}$の代わりに、
+重心座標$\bm{R}$と相対座標$\bm{r}$を導入する。
+\begin{align}
+	\label{CM_R}
+	\bm{R} &= \dfrac{m_1\bm{r_1} + m_2\bm{r_2}}{m_1 + m_2} \\
+	\label{rel_r}
+	\bm{r} &= \bm{r_1} - \bm{r_2}
+\end{align}
+これを用いて、
+\begin{align}
+	\bm{r_1} &= \bm{R} + \dfrac{m_2}{m_1 + m_2}\bm{r} \\
+	\bm{r_2} &= \bm{R} - \dfrac{m_1}{m_1 + m_2}\bm{r}
+\end{align}
+これを(\ref{L})に代入すると、
+\begin{align}
+	L &= \dfrac{1}{2}m_1\left( \dot{\bm{R}} + \dfrac{m_2}{m_1 + m_2}\dot{\bm{r}} \right)^2
+		+ \dfrac{1}{2}m_2\left( \dot{\bm{R}} - \dfrac{m_1}{m_1 + m_2}\dot{\bm{r}} \right)^2
+		- V(r) \\
+		&= \dfrac{1}{2}M\dot{\bm{R}}^2 + \dfrac{1}{2}\mu\dot{\bm{r}}^2 - V(r)
+\end{align}
+ここで、$M$を全質量、$\mu$を換算質量と呼び、
+\begin{align}
+	M &= m_1 + m_2 \\
+	\mu &= \dfrac{m_1m_2}{m_1+m_2}
+\end{align}
+とする。
+また、$\bm{R}$に対応する運動量$\bm{P}$を全運動量、$\bm{r}$に対応する運動量$\bm{p}$を相対運動量といい、
+\begin{align}
+	\label{CM_P}
+	\bm{P} &= M\dot{\bm{R}} = m_1\dot{\bm{r_1}} + m_2\dot{\bm{r_2}} \\
+	\label{rel_p}
+	\bm{p} &= \mu\dot{\bm{r}} = \dfrac{m_2\dot{\bm{p_1}} - m_1\dot{\bm{p_2}}}{m_1 + m_2}
+\end{align}
+である。
+これを用いることで、ハミルトニアン$H$は
+\begin{equation}
+	H = \dfrac{\bm{P}^2}{2M} + \dfrac{\bm{p}^2}{2\mu} + V(r)
+\end{equation}
+とすることができる。
+ここで、各粒子の運動方程式は
+\begin{align}
+	m_1 \dfrac{d^2 \bm{r_1}}{d t^2} &= - \dfrac{\partial V}{\partial \bm{r_1}} = - \dfrac{\partial V}{\partial \bm{r}} \\
+	m_2 \dfrac{d^2 \bm{r_2}}{d t^2} &= - \dfrac{\partial V}{\partial \bm{r_2}} = + \dfrac{\partial V}{\partial \bm{r}} \\
+\end{align}
+である。これより
+\begin{align}
+	\dot{\bm{P}} &= m_1\ddot{\bm{r_1}} + m_2\ddot{\bm{r_2}} = - \dfrac{\partial V}{\partial \bm{r}} + \dfrac{\partial V}{\partial \bm{r}} = 0 \\
+	\dot{\bm{p}} &= \dfrac{1}{m_1 + m_2}(m_2 m_1 \ddot{\bm{r_1}} - m_1 m_2 \ddot{\bm{r_2}}) =
+	\dfrac{1}{m_1 + m_2}\left( -m_2 \dfrac{\partial V}{\partial \bm{r}} - m_1\dfrac{\partial V}{\partial \bm{r}} \right)
+	= -\dfrac{\partial V}{\partial \bm{r}}
+\end{align}
+よって、重心運動は直線運動、相対運動はポテンシャル$V(r)$内における質量$\mu$の粒子の運動であると分かる。
+\footnote{$F = -\nabla V$を思い出そう。すると、$\dot{\bm{P}}$は$F = 0$なので、直線運動。$\dot{\bm{p}}$は$F = - \dfrac{\partial V}{\partial \bm{r}}$なので、ポテンシャル$V$内での運動。}
+
+\subsection{量子系での重心運動の分離}
+古典での重心運動の分離は量子論でもできる。
+$2$つの粒子の位置と運動量を表す演算子$\hat{\bm{r_1}},\hat{\bm{r_2}},\hat{\bm{p_1}},\hat{\bm{p_2}}$は
+交換関係
+\begin{equation}
+	\label{communication_relation_r_p}
+	[\hat{\bm{r_i}},\hat{\bm{p_j}}] = i\hbar\delta_{ij}
+\end{equation}
+を満たす。
+(\ref{CM_R})、(\ref{rel_r})、(\ref{CM_P})、(\ref{rel_p})と同じように演算子$\hat{\bm{R}},\hat{\bm{r}},\hat{\bm{P}},\hat{\bm{p}}$を導入する。
+交換関係(\ref{communication_relation_r_p})を用いて$[\hat{\bm{R}},\hat{\bm{P}}]$と$[\hat{\bm{r}},\hat{\bm{p}}]$を計算する。
+\begin{align}
+	[\hat{\bm{R}},\hat{\bm{P}}]
+	&= \dfrac{m_1\bm{r_1} + m_2\bm{r_2}}{m_1 + m_2}(\bm{p_1} + \bm{p_2}) - (\bm{p_1} + \bm{p_2})\dfrac{m_1\bm{r_1} + m_2\bm{r_2}}{m_1 + m_2}\\
+	&= \dfrac{1}{m_1 + m_2}[m_1\bm{r_1}\bm{p_1} + m_1\bm{r_1}\bm{p_2} + m_2\bm{r_2}\bm{p_1} + m_2\bm{r_2}\bm{p_2}
+	- m_1\bm{p_1}\bm{r_1} - m_2\bm{p_1}\bm{r_2} - m_1\bm{p_2}\bm{r_1} - m_2\bm{p_2}\bm{r_2}] \\
+	&= \dfrac{1}{m_1 + m_2}[ m_1(\bm{r_1}\bm{p_1} - \bm{p_1}\bm{r_1}) + m_2(\bm{r_2}\bm{p_2} - \bm{p_2}\bm{r_2})] \\
+	&= i\hbar
+\end{align}
+\begin{align}
+	[\hat{\bm{r}},\hat{\bm{p}}]
+	&= (\bm{r_1} - \bm{r_2})\dfrac{m_2\bm{p_1} - m_1\bm{p_2}}{m_1 + m_2} - \dfrac{m_2\bm{p_1} - m_1\bm{p_2}}{m_1 + m_2}(\bm{r_1} - \bm{r_2}) \\
+	&= \dfrac{1}{m_1 + m_2}[m_2\bm{r_1}\bm{p_1} - m_1\bm{r_1}\bm{p_2} - m_2\bm{r_2}\bm{p_1} + m_1\bm{r_2}\bm{p_2}
+	- m_2\bm{p_1}\bm{r_1} + m_2\bm{p_1}\bm{r_2} + m_1\bm{p_2}\bm{r_1} - m_1\bm{p_2}\bm{r_2}] \\
+	&= \dfrac{1}{m_1 + m_2}[m_2(\bm{r_1}\bm{p_1} - \bm{p_1}\bm{r_1}) + m_1(\bm{r_2}\bm{p_2} - \bm{p_2}\bm{r_2})] \\
+	&= i\hbar
+\end{align}
+と交換関係が成立する。
+
+$2$粒子系のハミルトニアン$\hat{H}$は
+\begin{equation}
+	\hat{H} = \dfrac{\hat{\bm{p_1}}^2}{2m_1} + \dfrac{\hat{\bm{p_2}}^2}{2m_2} + V(|\bm{r_1} - \bm{r_2}|)
+\end{equation}
+と書けて、$\hat{\bm{R}},\hat{\bm{r}},\hat{\bm{P}},\hat{\bm{p}}$を用いると、これらの演算子の交換関係から
+\begin{equation}
+\hat{H} = \dfrac{\hat{\bm{P}}^2}{2M} + \dfrac{\hat{\bm{p}}^2}{2\mu} + V(r)
+\end{equation}
+と書ける。
+ここで、
+\begin{align}
+	\hat{H}_{CM} &= \dfrac{\hat{\bm{P}}^2}{2M} \\
+	\hat{H}_{rel} &= \dfrac{\hat{\bm{p}}^2}{2\mu} + V(r)
+\end{align}
+とすると、\footnote{CM:center of mass (重心) \\ rel:relative(相対運動)}
+\begin{equation}
+	\hat{H} = \hat{H}_{CM} + \hat{H}_{rel}
+\end{equation}
+となり、交換関係(\ref{communication_relation_r_p})があるので、
+\begin{equation}
+	[\hat{H}_{CM},\hat{H}_{rel}] = 0
+\end{equation}
+
+重心座標と相対座標で表したシュレディンガー方程式
+\begin{equation}
+	(\hat{H}_{CM} + \hat{H}_{rel})\psi(\bm{R},\bm{r}) = E\psi(\bm{R},\bm{r})
+\end{equation}
+の解を考える。
+このシュレディンガー方程式は変数分離形である。
+\begin{equation}
+	\psi(\bm{R},\bm{r}) = \psi_{CM}(\bm{R})\psi_{rel}(\bm{r})
+\end{equation}
+と分離して元に戻すと、
+\begin{equation}
+	\hat{H}_{CM}\psi_{CM}(\bm{R})\psi_{rel}(\bm{r}) + \hat{H}_{rel}\psi_{CM}(\bm{R})\psi_{rel}(\bm{r}) = E\psi_{CM}(\bm{R})\psi_{rel}(\bm{r})
+\end{equation}
+両辺を$\psi_{CM}(\bm{R})\psi_{rel}(\bm{r})$で割ると、
+\begin{equation}
+	\dfrac{1}{\psi_{CM}}\hat{H}_{CM}\psi_{CM} + \dfrac{1}{\psi_{rel}}\hat{H}_{rel}\psi_{rel} = E
+\end{equation}
+ここで、左辺第$1$項目は$R$に関して、第$2$項目は$r$に関して、右辺は定数$E$である。
+つまり、左辺の各項は定数である必要がある。
+\begin{align}
+	\dfrac{1}{\psi_{CM}}\hat{H}_{CM}\psi_{CM} &= E_{CM} \\
+	\dfrac{1}{\psi_{rel}}\hat{H}_{rel}\psi_{rel} &= E_{rel}
+\end{align}
+よって、
+\begin{align}
+	\hat{H}_{CM}\psi_{CM} &= E_{CM}\psi_{CM} \\
+	\hat{H}_{rel}\psi_{rel} &= E_{rel}\psi_{rel}
+\end{align}
+つまり、
+\begin{align}
+	\label{CM_schrodinger_eq}
+	-\dfrac{\hbar^2}{2M}\Delta_R\psi_{CM}(\bm{R}) &= E_{CM}\psi_{CM}(\bm{R}) \\
+	\label{rel_schrodinger_eq}
+	\left[ -\dfrac{\hbar^2}{2\mu}\Delta_r + V(\bm{r})\right] &= E_{rel}\psi_{rel}(\bm{r})
+\end{align}
+ここで、$\Delta_R$は$R$座標に関するラプラシアン で、$\Delta_r$は$r$座標に関するラプラシアンである。
+
+(\ref{CM_schrodinger_eq})は質量$M$の自由粒子のシュレディンガー方程式であり、$2$粒子系の重心の運動を表している。
+解である$\psi_R$は平面波である。$E_R$は重心の運動のエネルギー固有値。
+
+(\ref{rel_schrodinger_eq})は質量$\mu$の$1$つ粒子が中心力ポテンシャル$V(\bm{r})$内で運動する時のシュレディンガー方程式である。
+つまり、$2$体問題は換算質量を用いることで$1$体問題に帰着することができる。$E_rel$は相対運動のエネルギー固有値。
+
 
 \section{水素原子}
 
 
 
 
+
+
+
+
 \input{orthogonal_polynomial.tex}
-
-
-
-
-
-
-% \section{諸々の証明}
-
-
 
 
 \end{document}
