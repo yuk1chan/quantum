@@ -5,38 +5,38 @@ $x$軸上で原点からの距離に比例する引力を受けて単振動す�
 よって、ポテンシャルは位置にのみ依存するので、時間に依存しないシュレディンガー方程式を用いて
 
 \begin{equation}
-	\label{harmony_schrodinger_eq}
-	E\psi(x) = - \dfrac{\hbar^2}{2m} \dfrac{d^2 \psi(x)}{d x^2} + \dfrac{1}{2}m\omega x^2\psi(x)
+  \label{harmony_schrodinger_eq}
+  E\psi(x) = - \dfrac{\hbar^2}{2m} \dfrac{d^2 \psi(x)}{d x^2} + \dfrac{1}{2}m\omega x^2\psi(x)
 \end{equation}
 
 となる。このままでも解くことができるが、式を簡単にして見通しをよくしたい。
 そのためには、
 \begin{align}
-		\label{xi}
-		\xi &= \sqrt{\dfrac{m\omega}{\hbar}}x \\
-		\label{eps}
-		\epsilon &= \dfrac{2E}{\hbar\omega}
+  \label{xi}
+  \xi &= \sqrt{\dfrac{m\omega}{\hbar}}x \\
+  \label{eps}
+  \epsilon &= \dfrac{2E}{\hbar\omega}
 \end{align}
 という、無次元の変数$\xi$、$\epsilon$を導入する。
 
 (\ref{harmony_schrodinger_eq})の両辺に$\dfrac{2}{\hbar\omega}$をかけると、
 
 \begin{equation}
-	\dfrac{2E}{\hbar\omega}\psi(x) = - \dfrac{\hbar}{m\omega} \dfrac{d^2 \psi(x)}{d x^2} + \dfrac{m\omega}{\hbar} x^2\psi(x)
+  \dfrac{2E}{\hbar\omega}\psi(x) = - \dfrac{\hbar}{m\omega} \dfrac{d^2 \psi(x)}{d x^2} + \dfrac{m\omega}{\hbar} x^2\psi(x)
 \end{equation}
 
 変形して、
 \begin{equation}
-	\dfrac{2E}{\hbar\omega}\psi(x) = - \dfrac{d^2 \psi(x)}{d \dfrac{m\omega}{\hbar} x^2} + \dfrac{m\omega}{\hbar} x^2\psi(x)
+  \dfrac{2E}{\hbar\omega}\psi(x) = - \dfrac{d^2 \psi(x)}{d \dfrac{m\omega}{\hbar} x^2} + \dfrac{m\omega}{\hbar} x^2\psi(x)
 \end{equation}
 (\ref{xi})、(\ref{eps})より、
 \begin{equation}
-	\epsilon\psi(\xi) = - \dfrac{d^2 \psi(\xi)}{d \xi^2} + \xi^2\psi(\xi)
+  \epsilon\psi(\xi) = - \dfrac{d^2 \psi(\xi)}{d \xi^2} + \xi^2\psi(\xi)
 \end{equation}
 よって、
 \begin{equation}
-	\label{harmony_DE}
-	\dfrac{d^2 \psi(\xi)}{d \xi^2} + (\epsilon - \xi^2)\psi(\xi) = 0
+  \label{harmony_DE}
+  \dfrac{d^2 \psi(\xi)}{d \xi^2} + (\epsilon - \xi^2)\psi(\xi) = 0
 \end{equation}
 となる。
 この微分方程式を解けば良いのだが、これが難しい。
@@ -44,17 +44,17 @@ $x$軸上で原点からの距離に比例する引力を受けて単振動す�
 $\xi \to \pm \infty$では$\epsilon$は$\xi$に比べて小さいので無視できそうだ。
 すると、
 \begin{equation}
-	\dfrac{d^2 \psi(\xi)}{d \xi^2}  - \xi^2\psi(\xi) = 0
+  \dfrac{d^2 \psi(\xi)}{d \xi^2}  - \xi^2\psi(\xi) = 0
 \end{equation}
 これは簡単に解く事ができて、
 \begin{equation}
-	\psi(\xi) = He^{\pm \frac{\xi^2}{2}}
+  \psi(\xi) = He^{\pm \frac{\xi^2}{2}}
 \end{equation}
 となる。($H$は任意定数)
 $\xi \to \pm\infty$の極限では波動関数$\psi$は収束しなければいけない。
 そのため、指数部分の符号は負である必要がある。よって、
 \begin{equation}
-	\psi(\xi) = He^{-\frac{\xi^2}{2}}
+  \psi(\xi) = He^{-\frac{\xi^2}{2}}
 \end{equation}
 これは、$\xi \to \pm \infty$の極限を仮定した解であることに注意しなければならない。
 実際に、これを(\ref{harmony_DE})に戻してみると、当然解になっていない事が確認できる。
@@ -63,56 +63,56 @@ $\xi \to \pm\infty$の極限では波動関数$\psi$は収束しなければい�
 
 今、
 \begin{equation}
-	\psi(\xi) = H(\xi)e^{-\frac{\xi^2}{2}}
+  \psi(\xi) = H(\xi)e^{-\frac{\xi^2}{2}}
 \end{equation}
 
 これを(\ref{harmony_DE})に戻す。
 積の微分であることに注意すると、
 \begin{equation}
-	\dfrac{d\psi(\xi)}{d\xi} = e^{-\frac{\xi^2}{2}}\dfrac{dH(\xi)}{d\xi} - \xi H(\xi)e^{-\frac{\xi^2}{2}}
+  \dfrac{d\psi(\xi)}{d\xi} = e^{-\frac{\xi^2}{2}}\dfrac{dH(\xi)}{d\xi} - \xi H(\xi)e^{-\frac{\xi^2}{2}}
 \end{equation}
 \begin{equation}
-	\dfrac{d^2\psi(\xi)}{d\xi^2} = e^{-\frac{\xi^2}{2}}\dfrac{d^2 H(\xi)}{d\xi^2} -2\xi e^{-\frac{\xi^2}{2}}\dfrac{dH(\xi)}{d\xi}
-	 															+ (\xi^2 - 1)H(\xi)e^{-\frac{\xi^2}{2}}
+  \dfrac{d^2\psi(\xi)}{d\xi^2} = e^{-\frac{\xi^2}{2}}\dfrac{d^2 H(\xi)}{d\xi^2} -2\xi e^{-\frac{\xi^2}{2}}\dfrac{dH(\xi)}{d\xi}
+  + (\xi^2 - 1)H(\xi)e^{-\frac{\xi^2}{2}}
 \end{equation}
 
 なので、(\ref{harmony_DE})に戻すと、
 
 \begin{equation}
-	\label{H_DE}
-	\left[\dfrac{d^2}{d\xi^2} -2\xi\dfrac{d}{d\xi} + (\epsilon -1)\right]H(\xi) = 0
+  \label{H_DE}
+  \left[\dfrac{d^2}{d\xi^2} -2\xi\dfrac{d}{d\xi} + (\epsilon -1)\right]H(\xi) = 0
 \end{equation}
 
 この微分方程式を解くことになる。
 これを解くために、$H(\xi)$が級数展開できると仮定する。
 \begin{equation}
-	H(\xi) = \sum_{k=0}^{\infty}a_k \xi^k
+  H(\xi) = \sum_{k=0}^{\infty}a_k \xi^k
 \end{equation}
 この$a_k$を求める事ができれば、$H(\xi)$が決まるので、微分方程式が解けたことになる。
 微分すると、
 \begin{equation}
-	\dfrac{d H(\xi)}{d\xi} = \sum_{k=1}^{\infty}a_k k\xi^{k-1} = \sum_{k=0}^{\infty}a_k k\xi^k
+  \dfrac{d H(\xi)}{d\xi} = \sum_{k=1}^{\infty}a_k k\xi^{k-1} = \sum_{k=0}^{\infty}a_k k\xi^k
 \end{equation}
 \begin{equation}
-	\dfrac{d^2 H(\xi)}{d\xi} = \sum_{k=2}^{\infty}a_k k(k-1)\xi^{k-2} = \sum_{k=0}^{\infty}a_{k+2} (k+2)(k+1)\xi^k
+  \dfrac{d^2 H(\xi)}{d\xi} = \sum_{k=2}^{\infty}a_k k(k-1)\xi^{k-2} = \sum_{k=0}^{\infty}a_{k+2} (k+2)(k+1)\xi^k
 \end{equation}
 よって、(\ref{H_DE})に戻すと、
 \begin{equation}
-	\sum_{k=0}^{\infty} \left[ (k+2)(k+1)a_{k+2} - (2k - \epsilon + 1)a_k  \right] \xi^k = 0
+  \sum_{k=0}^{\infty} \left[ (k+2)(k+1)a_{k+2} - (2k - \epsilon + 1)a_k  \right] \xi^k = 0
 \end{equation}
 これより、
 \begin{equation}
-	(k+2)(k+1)a_{k+2} = (2k - \epsilon + 1)a_k
+  (k+2)(k+1)a_{k+2} = (2k - \epsilon + 1)a_k
 \end{equation}
 という事がわかるので、
 \begin{equation}
-	\label{recurrence_relation_1}
-	a_{k+2} = \dfrac{(2k - \epsilon + 1)}{(k+2)(k+1)}a_k
+  \label{recurrence_relation_1}
+  a_{k+2} = \dfrac{(2k - \epsilon + 1)}{(k+2)(k+1)}a_k
 \end{equation}
 となり、
 \begin{itemize}
-	\item $a_0$が決まれば、偶数次の項
-	\item $a_1$が決まれば、奇数次の項
+\item $a_0$が決まれば、偶数次の項
+\item $a_1$が決まれば、奇数次の項
 \end{itemize}
 が決まることになる。
 
@@ -122,25 +122,25 @@ $k \to \infty$の時、$a_{k+2} \approx \dfrac{2}{k}a_k$と近似できる。
 $k = 2n$とすると、$a_{2(n+1)} \approx \dfrac{1}{n}a_{2n}$となる。
 なので、
 \begin{equation}
-	H(\xi) \approx \sum_{n}\dfrac{1}{n!}\xi^{2n} \approx e^{\xi^2}
+  H(\xi) \approx \sum_{n}\dfrac{1}{n!}\xi^{2n} \approx e^{\xi^2}
 \end{equation}
 すると、
 \begin{equation}
-	\psi(\xi) = H(\xi)e^{-\frac{\xi^2}{2}} \approx e^{\frac{\xi^2}{2}}
+  \psi(\xi) = H(\xi)e^{-\frac{\xi^2}{2}} \approx e^{\frac{\xi^2}{2}}
 \end{equation}
 となり、$\xi \to \infty$で発散してしまう。
 $H(\xi)$が無限級であるために発散してしまうのだ。
 なので、収束させるために$H(\xi)$が有限個の項で終わるような条件を付けてやれば良い。
 (\ref{recurrence_relation_1})より、
 \begin{equation}
-	\label{eps_requirement}
-	\epsilon = 2n + 1
+  \label{eps_requirement}
+  \epsilon = 2n + 1
 \end{equation}
 とすれば、第$n$項は存在するが、第$n+2$項から$0$になる。
 第$n+1$項も$0$であって欲しいので、
 \begin{itemize}
-	\item $n$が偶数 $\Rightarrow a_1 = 0$
-	\item $n$が奇数 $\Rightarrow a_0 = 0$
+\item $n$が偶数 $\Rightarrow a_1 = 0$
+\item $n$が奇数 $\Rightarrow a_0 = 0$
 \end{itemize}
 という条件を付けて、$n$が偶数の時は奇数次の項が、$n$が奇数の時は偶数次の項が$0$になるようにしてしまえば良い。
 
@@ -156,32 +156,32 @@ $$
 
 一般的に、エルミート多項式は
 \begin{equation}
-	H_{n}(\xi)=(-1)^{n} e^{\xi^{2}} \frac{\mathrm{d}^{n}}{\mathrm{d} \xi^{n}} e^{-\xi^{2}}
+  H_{n}(\xi)=(-1)^{n} e^{\xi^{2}} \frac{\mathrm{d}^{n}}{\mathrm{d} \xi^{n}} e^{-\xi^{2}}
 \end{equation}
 と書ける。
 いくつか計算してみると、
 \begin{equation}
-\begin{aligned}
-	H_{0}(\xi) &= 1 \\
-	H_{1}(\xi) &= 2 \xi \\
-	H_{2}(\xi) &= 4 \xi^{2}-2 \\
-	H_{3}(\xi) &= 8 \xi^{3}-12 \xi \\
-						 & \vdots \end{aligned}
+  \begin{aligned}
+    H_{0}(\xi) &= 1 \\
+    H_{1}(\xi) &= 2 \xi \\
+    H_{2}(\xi) &= 4 \xi^{2}-2 \\
+    H_{3}(\xi) &= 8 \xi^{3}-12 \xi \\
+    & \vdots \end{aligned}
 \end{equation}
 
 $a_0$と$a_1$が$n$によって違うが、微分方程式(\ref{H_DE})を満たすので気にしなくて良い。
 
 以上のことより、
 \begin{equation}
-	\label{harmony_psi}
-	\psi_n(\xi) = H_n(\xi)e^{-\frac{\xi^2}{2}}
+  \label{harmony_psi}
+  \psi_n(\xi) = H_n(\xi)e^{-\frac{\xi^2}{2}}
 \end{equation}
 と、(\ref{harmony_schrodinger_eq})を解く事ができた。
 
 ここで、(\ref{eps})と、(\ref{eps_requirement})を思い出してみよう。
 これらより、
 \begin{equation}
-	E_n = \hbar\omega(n+\frac{1}{2})
+  E_n = \hbar\omega(n+\frac{1}{2})
 \end{equation}
 $n$は$0$を含む正の整数である。(エルミート多項式を定義するため)
 
@@ -202,17 +202,17 @@ $n = 0$の時、$E_0 = \frac{1}{2}\hbar\omega$である。
 固有エネルギー$En$と対応する波動関数$\psi_n$を$n=11$までplotしたものだ。
 波動関数は固有エネルギー分を平行移動してあり、規格化されている。
 \begin{figure}[htb]
-	\begin{center}
-		\includegraphics[height=6cm]{../fig/harmony.png}
-		\caption{調和振動子ポテンシャルと波動関数($n=11$まで)}
-		\label{}
-	\end{center}
+  \begin{center}
+    \includegraphics[height=6cm]{../fig/harmony.png}
+    \caption{調和振動子ポテンシャルと波動関数($n=11$まで)}
+    \label{}
+  \end{center}
 \end{figure}
 
 量子的なミクロな世界にバネは存在しない。しかし、粒子が移動しようとしても元の位置に戻すような力、復元力が働くような状況を条件によっては作り出せるわけだ。
 そのような復元力を級数展開して
 \begin{equation}
-	V(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4 + \cdots
+  V(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4 + \cdots
 \end{equation}
 と書けるとしよう。
 $x$がとても小さい時、$3$次以降の項は$2$次の項に比べてほとんど無視できる程に小さい。
