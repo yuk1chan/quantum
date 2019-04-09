@@ -1,93 +1,93 @@
 \section{時間に依存しないシュレディンガー方程式}
-	ポテンシャル$V$が時間に依存しない場合、変数分離を用いて解くことができる。
+ポテンシャル$V$が時間に依存しない場合、変数分離を用いて解くことができる。
 
-	\begin{equation}
-	  i\hbar \dfrac{\partial \psi(x,t)}{\partial t} = - \dfrac{\hbar^2}{2m} \dfrac{\partial^2 \psi(x,t)}{\partial x^2} + V(x)\psi(x,t)
-	\end{equation}
+\begin{equation}
+  i\hbar \dfrac{\partial \psi(x,t)}{\partial t} = - \dfrac{\hbar^2}{2m} \dfrac{\partial^2 \psi(x,t)}{\partial x^2} + V(x)\psi(x,t)
+\end{equation}
 
-	今、波動関数$\psi(x,t)$が位置$x$と時間$t$についての関数$f(x)$、$g(t)$との積で書けるとする。
+今、波動関数$\psi(x,t)$が位置$x$と時間$t$についての関数$f(x)$、$g(t)$との積で書けるとする。
 
-	\begin{equation}
-	  \psi(x,t) = f(x)g(t)
-	\end{equation}
+\begin{equation}
+  \psi(x,t) = f(x)g(t)
+\end{equation}
 
-	すると、
+すると、
 
-	\begin{equation}
-	  i\hbar \dfrac{\partial f(x)g(t)}{\partial t} = - \dfrac{\hbar^2}{2m} \dfrac{\partial^2 f(x)g(t)}{\partial x^2} + V(x)f(x)g(t)
-	\end{equation}
+\begin{equation}
+  i\hbar \dfrac{\partial f(x)g(t)}{\partial t} = - \dfrac{\hbar^2}{2m} \dfrac{\partial^2 f(x)g(t)}{\partial x^2} + V(x)f(x)g(t)
+\end{equation}
 
-	左辺は$t$で、右辺は$x$での偏微分なので、
+左辺は$t$で、右辺は$x$での偏微分なので、
 
-	\begin{equation}
-	  i\hbar f(x)\dfrac{\partial g(t)}{\partial t} = - \dfrac{\hbar^2}{2m} g(t)\dfrac{\partial^2 f(x)}{\partial x^2} + V(x)f(x)g(t)
-	\end{equation}
+\begin{equation}
+  i\hbar f(x)\dfrac{\partial g(t)}{\partial t} = - \dfrac{\hbar^2}{2m} g(t)\dfrac{\partial^2 f(x)}{\partial x^2} + V(x)f(x)g(t)
+\end{equation}
 
-	ここで、両辺を$f(x)g(t)$で割ると、
+ここで、両辺を$f(x)g(t)$で割ると、
 
-	\begin{equation}
-	  i\hbar \dfrac{1}{g(t)}\dfrac{\partial g(t)}{\partial t} = - \dfrac{\hbar^2}{2m} \dfrac{1}{f(x)}\dfrac{\partial^2 f(x)}{\partial x^2} + V(x)
-	\end{equation}
+\begin{equation}
+  i\hbar \dfrac{1}{g(t)}\dfrac{\partial g(t)}{\partial t} = - \dfrac{\hbar^2}{2m} \dfrac{1}{f(x)}\dfrac{\partial^2 f(x)}{\partial x^2} + V(x)
+\end{equation}
 
-	左辺は時間$t$に関して、右辺は位置$x$に関しての式になった。
-	つまり、両辺は$x$にも$t$にも依存しない定数である必要があり、この定数を$E$とする。
+左辺は時間$t$に関して、右辺は位置$x$に関しての式になった。
+つまり、両辺は$x$にも$t$にも依存しない定数である必要があり、この定数を$E$とする。
 
-	\begin{align}
-	  i\hbar \dfrac{1}{g(t)}\dfrac{d g(t)}{d t} = E \\
-	  - \dfrac{\hbar^2}{2m} \dfrac{1}{f(x)}\dfrac{d^2 f(x)}{d x^2} + V(x) = E
-	\end{align}
+\begin{align}
+  i\hbar \dfrac{1}{g(t)}\dfrac{d g(t)}{d t} = E \\
+  - \dfrac{\hbar^2}{2m} \dfrac{1}{f(x)}\dfrac{d^2 f(x)}{d x^2} + V(x) = E
+\end{align}
 
-	整理すると、
+整理すると、
 
-	\begin{align}
-	  \label{eq.no.1}
-	  i\hbar \dfrac{d g(t)}{d t} = Eg(t) \\
-	  \label{eq.no.2}
-	  - \dfrac{\hbar^2}{2m} \dfrac{d^2 f(x)}{d x^2} = [ E-V(x) ]f(x)
-	\end{align}
+\begin{align}
+  \label{eq.no.1}
+  i\hbar \dfrac{d g(t)}{d t} = Eg(t) \\
+  \label{eq.no.2}
+  - \dfrac{\hbar^2}{2m} \dfrac{d^2 f(x)}{d x^2} = [ E-V(x) ]f(x)
+\end{align}
 
-	(\ref{eq.no.1})、(\ref{eq.no.2})を解いていく。
+(\ref{eq.no.1})、(\ref{eq.no.2})を解いていく。
 
-	(\ref{eq.no.1})は
-	\begin{align}
-	  i\hbar \dfrac{d g(t)}{d t} &= Eg(t) \\
-	  \dfrac{d g(t)}{d t} &= -i \dfrac{E}{\hbar} g(t)
-	\end{align}
-	より、
-	\begin{equation}
-	  \label{ans.no.1}
-	  \displaystyle g(t) = Ae^{-i \frac{E}{\hbar} t}
-	\end{equation}
-	と求まる。($A$は任意定数)
+(\ref{eq.no.1})は
+\begin{align}
+  i\hbar \dfrac{d g(t)}{d t} &= Eg(t) \\
+  \dfrac{d g(t)}{d t} &= -i \dfrac{E}{\hbar} g(t)
+\end{align}
+より、
+\begin{equation}
+  \label{ans.no.1}
+  \displaystyle g(t) = Ae^{-i \frac{E}{\hbar} t}
+\end{equation}
+と求まる。($A$は任意定数)
 
-	ここで、$\dfrac{E}{\hbar}$について考える。
+ここで、$\dfrac{E}{\hbar}$について考える。
 
-	(\ref{ans.no.1})は波であることから、$\dfrac{E}{\hbar}$は角速度$\omega$と分かる。
+(\ref{ans.no.1})は波であることから、$\dfrac{E}{\hbar}$は角速度$\omega$と分かる。
 
-	つまり、
-	\begin{equation}
-	  E = \hbar \omega
-	\end{equation}
+つまり、
+\begin{equation}
+  E = \hbar \omega
+\end{equation}
 
-	これを変形すると、
-	\begin{align}
-	  E &= \hbar \omega \\
-	    &= \dfrac{h}{2\pi} 2\pi \nu \\
-	    &= h\nu
-	\end{align}
+これを変形すると、
+\begin{align}
+  E &= \hbar \omega \\
+  &= \dfrac{h}{2\pi} 2\pi \nu \\
+  &= h\nu
+\end{align}
 
-	これは、粒子性と波動性を結ぶ大切な式であり、定数$E$はエネルギーと同じ次元を持つことが分かる。
+これは、粒子性と波動性を結ぶ大切な式であり、定数$E$はエネルギーと同じ次元を持つことが分かる。
 
-	次に、(\ref{eq.no.2})について考える。
-	\begin{equation*}
-		\label{time_independent_schrodinger_eq}
-		- \dfrac{\hbar^2}{2m} \dfrac{d^2 f(x)}{d x^2} = [ E-V(x) ]f(x)
-	\end{equation*}
-	これは、{\bf 時間に依存しないシュレディンガー方程式} と呼ばれる。
+次に、(\ref{eq.no.2})について考える。
+\begin{equation*}
+  \label{time_independent_schrodinger_eq}
+  - \dfrac{\hbar^2}{2m} \dfrac{d^2 f(x)}{d x^2} = [ E-V(x) ]f(x)
+\end{equation*}
+これは、{\bf 時間に依存しないシュレディンガー方程式} と呼ばれる。
 
-	$V(x)$を具体的に決めることによって解くことができるかもしれない。
+$V(x)$を具体的に決めることによって解くことができるかもしれない。
 
-	後にやる調和振動子ポテンシャルや井戸型ポテンシャルは解析的に解く事ができる。しかし、解析的に解く事ができるものばかりではない。
-	世の中、解析的に解けないものの方が多い。その場合は、コンピューターの力を使って数値的に解く。
-	
-	また、変分法や摂動論を用いて解析的に精度良く求めることもできる。
+後にやる調和振動子ポテンシャルや井戸型ポテンシャルは解析的に解く事ができる。しかし、解析的に解く事ができるものばかりではない。
+世の中、解析的に解けないものの方が多い。その場合は、コンピューターの力を使って数値的に解く。
+
+また、変分法や摂動論を用いて解析的に精度良く求めることもできる。
