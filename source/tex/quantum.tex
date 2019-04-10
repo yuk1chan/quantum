@@ -425,7 +425,7 @@ $Y_l^m$をいくつか書いておく。
 これが波動関数$\psi$が原点で満たすべき条件となる。
 
 
-\subsection{動径方程式}
+\subsection{動径方程式}\label{R_equation}
 
 今、任意の球対称なポテンシャルの中で、$L^2$と$L_z$がきまった値をもつ粒子の定常状態の波動関数は
 (\ref{RY})と(\ref{spherical_harmonics})より
@@ -498,10 +498,12 @@ $E$と$l$と$m$の$3$つの値によって完全に決定できる。
 つまり、$\chi_l(r)$の原点での振る舞いを調べることで、$\psi$が本当にシュレディンガー方程式(\ref{polar_schrodinger_eq})の解になっているかどうかを確かめられる。
 今、$l \neq 0$として
 波動関数$\chi_l$とポテンシャル$V(r)$が原点付近で冪級数に展開できるとする。
-\begin{align}
-	\chi_l(r) &= r^\alpha\sum_{k=0}^\infty a_kr^k ~ (a_0 \neq 0) \\
-	V(r) &= r^\beta\sum_{k'=0}^\infty V_{k'}r^{k'} ~ (\beta > -2)
-\end{align}
+\begin{equation}
+	\chi_l(r) = r^\alpha\sum_{k=0}^\infty a_kr^k ~ (a_0 \neq 0)
+\end{equation}
+\begin{equation}
+	V(r) = r^\beta\sum_{k'=0}^\infty V_{k'}r^{k'} ~ (\beta > -2) \footnote{$\lim_{r \to 0} V(r)r^2 = 0$となるポテンシャルを考えている。}
+\end{equation}
 これを(\ref{R_l_Veff})に代入して整理すると、
 \begin{equation}
 	\dfrac{\hbar^2}{2m}\sum_{k=0}^\infty a_k
@@ -709,7 +711,7 @@ $2$つの粒子の質量を$m_1, m_2$、位置を$\bm{r_1},\bm{r_2}$とする。
 よって、重心運動は直線運動、相対運動はポテンシャル$V(r)$内における質量$\mu$の粒子の運動であると分かる。
 \footnote{$F = -\nabla V$を思い出そう。すると、$\dot{\bm{P}}$は$F = 0$なので、直線運動。$\dot{\bm{p}}$は$F = - \dfrac{\partial V}{\partial \bm{r}}$なので、ポテンシャル$V$内での運動。}
 
-\subsection{量子系での重心運動の分離}
+\subsection{量子系での重心運動の分離}\label{CM_separation}
 古典での重心運動の分離は量子論でもできる。
 $2$つの粒子の位置と運動量を表す演算子$\hat{\bm{r_1}},\hat{\bm{r_2}},\hat{\bm{p_1}},\hat{\bm{p_2}}$は
 交換関係
@@ -802,16 +804,142 @@ $2$粒子系のハミルトニアン$\hat{H}$は
 解である$\psi_R$は平面波である。$E_R$は重心の運動のエネルギー固有値。
 
 (\ref{rel_schrodinger_eq})は質量$\mu$の$1$つ粒子が中心力ポテンシャル$V(\bm{r})$内で運動する時のシュレディンガー方程式である。
-つまり、$2$体問題は換算質量を用いることで$1$体問題に帰着することができる。$E_rel$は相対運動のエネルギー固有値。
+つまり、$2$体問題は換算質量を用いることで$1$体問題に帰着することができる。$E_{rel}$は相対運動のエネルギー固有値。
 
 
 \section{水素原子}
+水素原子について考える。水素原子は$1$つの陽子と$1$つの電子から構成されている。
+つまり$2$体問題だ。しかし、重心運動を分離することにより$1$体問題に帰着することができると\ref{CM_separation}でやった。
+\subsection{水素原子のシュレディンガー方程式}
+陽子の質量を$m_p$、電子の質量を$m_e$として、換算質量$\mu = \frac{m_p m_e}{m_p + m_e}$と陽子と電子間に働くクーロン力のポテンシャル$V(r) = -\frac{e^2}{r}$を用いると
+シュレディンガー方程式は
+\begin{equation}
+	\left[ - \dfrac{\hbar}{2\mu}\Delta_r + V(r)\right]\psi(\bm{r})
+	= \left[\dfrac{\hat{p_r}^2}{2\mu} + \dfrac{\hat{L}^2}{2\mu r^2} - \dfrac{e^2}{r}\right]\psi(\bm{r}) = E\psi(\bm{r})
+\end{equation}
+と書ける。$\psi(\bm{r}) = R_l(r)Y_l^m(\theta,\varphi)$と変数分離すると、動径方程式は
+\begin{equation}
+	\left[ -\dfrac{\hbar^2}{2\mu}\left(\dfrac{1}{r}\dfrac{d^2}{dr^2}r\right)  + \dfrac{l(l+1)\hbar^2}{2\mu r^2} - \dfrac{e^2}{r}\right]R_l(r) = ER_l(r)
+\end{equation}
+となる。ここで、$-\frac{2\mu}{\hbar}$を両辺にかけて整理すると、
+\begin{equation}
+	\label{R_eq}
+	\dfrac{d^2 R_l}{dr^2} + \dfrac{2}{r}\dfrac{dR_l}{dr} + \dfrac{2\mu}{\hbar^2}\left[ E + \dfrac{e^2}{r} - \dfrac{l(l+1)\hbar^2}{2\mu r^2} \right]R_l = 0
+\end{equation}
+$r$が大きいところでは漸近的に
+\begin{equation}
+	\dfrac{d^2 R_l}{dr^2} = - \dfrac{2\mu E}{\hbar^2}R_l
+\end{equation}
+となり、クーロン力によって束縛されているので、$E < 0$である。
+つまり、$r \to \infty$で
+\begin{equation}
+	R_l(r) \approx \exp\left(- \sqrt{\dfrac{2\mu |E|}{\hbar^2}}\right)
+\end{equation}
+となる。
+ここで、無次元の独立変数
+\begin{equation}
+	\rho = \sqrt{\dfrac{8\mu|E|}{\hbar^2}r}
+\end{equation}
+を導入する。
+まず、(\ref{R_eq})を$\dfrac{8\mu|E|}{\hbar^2}$で割ると、
+\begin{equation}
+	\dfrac{d^2 R_l}{d \frac{8\mu|E|}{\hbar^2} r^2} + \dfrac{2}{\sqrt{\frac{8\mu|E|}{\hbar^2}}r}\dfrac{dR_l}{d\sqrt{\frac{8\mu|E|}{\hbar^2}}r}
+	 + \dfrac{1}{4|E|}\left[ E + \dfrac{e^2}{r} - \dfrac{l(l+1)\hbar^2}{2\mu r^2} \right]R_l = 0
+\end{equation}
+$\rho$を使って整理すると、
+\begin{equation}
+	\dfrac{d^2 R_l}{d \rho^2} + \dfrac{2}{\rho}\dfrac{d R_l}{d\rho} - \dfrac{l(l+1)}{\rho^2}R_l + \left(\dfrac{1}{4|E|}\dfrac{e^2}{r} + \dfrac{1}{4}\right)R_l = 0
+\end{equation}
+ここで、無次元の定数
+\begin{equation}
+	\label{lambda}
+	\lambda = \dfrac{e^2}{\hbar}\sqrt{\dfrac{\mu}{2|E|}}
+\end{equation}
+を導入すると、
+\begin{equation}
+	\label{H_atom_R_eq}
+	\dfrac{d^2 R_l}{d \rho^2} + \dfrac{2}{\rho}\dfrac{d R_l}{d\rho} - \dfrac{l(l+1)}{\rho^2}R_l + \left(\dfrac{\lambda}{\rho} - \dfrac{1}{4}\right)R_l = 0
+\end{equation}
+と書くことができる。
+ここで、$\rho \to \infty$と$\rho \to 0$の極限を考えて解見つけていく。
 
-
-
-
-
-
+$\rho \to \infty$の時、
+\begin{equation}
+	\dfrac{d^2 R_l}{d \rho^2} = \dfrac{1}{4}R_l
+\end{equation}
+となる。これの解は$R_l = Ae^{\pm\frac{1}{2}\rho}$となる($A$は任意定数)。しかし、$\rho \to \infty$の極限を考えているので、$Ae^{+\frac{1}{2}\rho}$は発散してしまう。
+なので、解は$R_l = Ae^{-\frac{1}{2}\rho}$を採用する。
+ここで、定数変化法ちっくに定数$A$が$\rho$の関数$A_l(\rho)$であるとする。\footnote{$\rho \to 0$の極限を考えるため}
+これを(\ref{H_atom_R_eq})に代入して整理すると
+\begin{equation}
+	\label{A_l_eq}
+	\dfrac{d^2 A_l}{d\rho^2} + \left( \dfrac{2}{\rho} - 1\right)\dfrac{d A_l}{d\rho} + \left(\dfrac{\lambda-1}{\rho} - \dfrac{l(l+1)}{\rho}\right)A_l = 0
+\end{equation}
+ここで、\ref{R_equation}で分かるように、$\lim_{r \to 0}V(r)r^2 = 0$を満たすポテンシャルの場合、$\rho$が小さい時は$R \sim \rho^l$、つまり、$A_l \sim \rho^l$と振る舞う。
+なので、
+\begin{equation}
+	A_l(\rho) = \rho^l L(\rho)
+\end{equation}
+の形の解を求める。
+これを(\ref{A_l_eq})に代入して$\rho^{l-1}$で割って整理すると
+\begin{equation}
+	\label{L_eq}
+	\rho \dfrac{d^2 L}{d\rho^2} + (2l + 2 - \rho)\dfrac{dL}{d\rho} + (\lambda -1 -l)L = 0
+\end{equation}
+ここで、$L$が原点付近で級数展開できる
+\begin{equation}
+	L(\rho) = \sum_{n = 0}^\infty a_n\rho^n
+\end{equation}
+とする。これを微分すると、
+\begin{equation}
+	\dfrac{d L(\rho)}{d \rho} = \sum_{n = 1}^\infty a_n n \rho^{n-1} = \sum_{n = 0}^\infty a_n n \rho^{n-1}
+\end{equation}
+\begin{equation}
+	\dfrac{d^2 L(\rho)}{d \rho^2} = \sum_{n = 2}^\infty a_{n}n(n-1)\rho^{n-2}
+	= \sum_{n = 1}^\infty a_{n+1}n(n+1)\rho^{n-1} = \sum_{n = 0}^\infty a_{n+1}n(n+1)\rho^{n-1}
+\end{equation}
+なので、これを(\ref{L_eq})に代入すると、
+\begin{equation}
+	\sum_{n = 0}^\infty a_{n+2}(n+1)(n+2)\rho^{n+1} + (2l+2-\rho)\sum_{n = 0}^\infty a_{n+1}(n+1)\rho^n + (\lambda - 1 -l)\sum_{n = 0}^\infty a_n\rho^n = 0
+\end{equation}
+整理すると、
+\begin{equation}
+	\sum_{n = 0}^\infty[n(n+1)a_{n+1} + (\lambda -1 - l -n)a_n]\rho^n + \sum_{n = 0}^\infty[2l + 2]a_n n\rho^{n-1} = 0
+\end{equation}
+ここで、第$2$項をずらすと、
+\begin{equation}
+	\sum_{n = 0}^\infty[n(n+1)a_{n+1} + (\lambda -1 - l -n)a_n]\rho^n + \sum_{n = 0}^\infty[2l + 2]a_{n+1} (n+1)\rho^{n} = 0
+\end{equation}
+$\rho^n$の項をまとめると、
+\begin{equation}
+	\sum_{n = 0}^\infty[(n+1)(n+2l+2)a_{n+1} + (\lambda-1-l-n)a_n]\rho^n = 0
+\end{equation}
+$\rho^n$の係数は$0$なので、
+\begin{equation}
+	\dfrac{a_{n+1}}{a_n} = \dfrac{n+l+1-\lambda}{(n+1)(n+2l+2)}
+\end{equation}
+従って、$n$が大きい時、$\frac{a_{n+1}}{a_n} \sim \frac{1}{n}$となる。
+このまま$n$が大きくなり続ける、つまり、級数が無限に続くと、$L(\rho)\approx e^\rho$となるので、
+$R_l \sim \rho^l e^\frac{\rho}{2}$となってしまい、$\rho\to\infty$で発散する。
+つまり、級数$L$はどこかで終わらなければならない。
+$n$が、ある$n_r$番目の項で$0$になれば$L$が有限の項で終わるので、
+$n_r = \lambda - 1 -l$という条件を課してやれば良い。
+つまり、$\lambda = n_r + l + 1$であり、正整数でなければならない。
+\begin{equation}
+	\lambda = n_r + l + 1 \equiv n
+\end{equation}
+$n_r$を動径量子数、$n$を主量子数と呼ぶ。
+この$\lambda$の物理的な意味を考えよう。
+(\ref{lambda})より
+\begin{equation}
+	\lambda = \dfrac{e^2}{\hbar}\sqrt{\dfrac{\mu}{2|E|}} = n
+\end{equation}
+これより
+\begin{equation}
+	E_n = -|E_n| = -\dfrac{\mu e^4}{2\hbar^2 n^2}
+\end{equation}
+となる。つまり、エネルギーが量子化された。
+\subsection{水素原子の波動関数}
 
 
 \input{orthogonal_polynomial.tex}
