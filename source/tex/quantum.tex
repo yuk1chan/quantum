@@ -838,7 +838,7 @@ $r$が大きいところでは漸近的に
 となる。
 ここで、無次元の独立変数
 \begin{equation}
-	\rho = \sqrt{\dfrac{8\mu|E|}{\hbar^2}r}
+	\rho = \sqrt{\dfrac{8\mu|E|}{\hbar^2}}r
 \end{equation}
 を導入する。
 まず、(\ref{R_eq})を$\dfrac{8\mu|E|}{\hbar^2}$で割ると、
@@ -888,6 +888,7 @@ $\rho \to \infty$の時、
 \end{equation}
 ここで、$L$が原点付近で級数展開できる
 \begin{equation}
+	\label{L_polynomials}
 	L(\rho) = \sum_{n = 0}^\infty a_n\rho^n
 \end{equation}
 とする。これを微分すると、
@@ -916,6 +917,7 @@ $\rho^n$の項をまとめると、
 \end{equation}
 $\rho^n$の係数は$0$なので、
 \begin{equation}
+	\label{an+1/an}
 	\dfrac{a_{n+1}}{a_n} = \dfrac{n+l+1-\lambda}{(n+1)(n+2l+2)}
 \end{equation}
 従って、$n$が大きい時、$\frac{a_{n+1}}{a_n} \sim \frac{1}{n}$となる。
@@ -932,15 +934,81 @@ $n_r$を動径量子数、$n$を主量子数と呼ぶ。
 この$\lambda$の物理的な意味を考えよう。
 (\ref{lambda})より
 \begin{equation}
+	\label{lambda_requ}
 	\lambda = \dfrac{e^2}{\hbar}\sqrt{\dfrac{\mu}{2|E|}} = n
 \end{equation}
 これより
 \begin{equation}
+	\label{H_En}
 	E_n = -|E_n| = -\dfrac{\mu e^4}{2\hbar^2 n^2}
 \end{equation}
 となる。つまり、エネルギーが量子化された。
+
 \subsection{水素原子の波動関数}
 
+(\ref{an+1/an})より、
+\begin{align}
+	a_k &= \dfrac{(k+l-\lambda)}{k(k+2l+1)}a_{k-1} \\
+			&= (-1)\dfrac{(\lambda-l-k)}{k(k+2l+1)}a_{k-1} \\
+			&= (-1)^2\dfrac{(\lambda-l-k)}{k(k+2l+1)}\dfrac{(\lambda-l-k+1)}{(k-1)(k+2l)}a_{k-2} \\
+			&= (-1)^k\dfrac{(\lambda-l-k)}{k(k+2l+1)}\dfrac{(\lambda-l-k+1)}{(k-1)(k+2l)}
+			\cdots\dfrac{(\lambda-l-2)}{2(2l+3)}\dfrac{(\lambda-l-1)}{1(2l+2)}a_0 \\
+			&= (-1)^k\dfrac{(2l+1)!(\lambda-l-1)!}{k!(k+2l+1)!(\lambda-l-k-1)!}a_0
+\end{align}
+(\ref{lambda_requ})より$\lambda = n$なので、
+\begin{equation}
+	a_k = (-1)^k\dfrac{(2l+1)!(n-l-1)!}{k!(k+2l+1)!(n-l-k-1)!}a_0
+\end{equation}
+$k$は$0$から$n-l-1$の範囲である。
+ここで、
+\begin{equation}
+	a_0 = (-1)^{2l+1}\dfrac{((n+l)!)^2}{(n−l−1)!(2l+1)!}
+\end{equation}
+とすると、
+\begin{equation}
+	a_k = (-1)^{k+2l+1}\dfrac{((n+l)!)^2}{k!(k+2l+1)!(n-l-k-1)!}
+\end{equation}
+よって、(\ref{L_polynomials})より
+\begin{equation}
+	L(\rho) = \sum_{k=0}^{n-l-1}(-1)^{k+2l+1}\dfrac{((n+l)!)^2}{k!(k+2l+1)!(n-l-k-1)!}\rho^k
+\end{equation}
+これは、
+\begin{equation}
+	L_p^q(\rho) = \sum_{k = 0}^{p-q} (-1)^{k+q} \dfrac{p!p!}{k!(k+q)!(p-k-q)!}\rho^k
+\end{equation}
+と定義されるLaguerre陪多項式の$p = n+l,q = 2l+1$に他ならない。
+
+よって、波動関数の動径部分は$e^{-\frac{\rho}{2}}\rho^l L_{n+l}^{2l+1}(\rho)$の形をしている。
+規格化定数は、積分
+\begin{equation}
+	\int_0^\infty e^\rho \rho^{2l} [L_{n+l}^{2l+1}(\rho)]^2 \rho^2 d\rho
+	= \dfrac{2n[(n+l)!]^3}{(n-l-1)!}
+\end{equation}
+をすると求まり、
+規格化された水素原子の波動関数は
+\begin{equation}
+	\psi_{nlm}(r,\theta,\varphi) = R_{nl}(r)Y_l^m(\theta,\varphi)
+\end{equation}
+ただし、
+\begin{align}
+	R_{nl} = - \left\{ \left(\dfrac{2}{na_0}\right)^3\dfrac{(n-l-1)!}{2n[(n+l)!]^3}\right\}^{\frac{1}{2}}e^{-\frac{1}{2}\rho}\rho^l L_{n+l}^{2l+1}(\rho) \\
+	a_0 = \dfrac{\hbar^2}{\mu e^2},~~~~\rho = \dfrac{2}{n a_0}r
+\end{align}
+である。
+
+これを用いると、
+エネルギー準位(\ref{H_En})は
+\begin{equation}
+	E_n = -\dfrac{e^2}{2a_0n^2}
+\end{equation}
+と書くことができる。
+
+$n = 1$の時が水素原子の基底状態のエネルギーで
+\begin{equation}
+	E_1 = -\dfrac{e^2}{2a_0} = -13.6 \si{eV}
+\end{equation}
+
+ここで、$a_0 = \dfrac{\hbar^2}{\mu e^2} = 0.53 \text{\AA}$はBohr半径と呼ばれている。
 
 \input{orthogonal_polynomial.tex}
 

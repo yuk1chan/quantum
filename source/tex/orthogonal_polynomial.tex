@@ -1,7 +1,7 @@
 \section{直交多項式}
 区間$I$上に定義された一変数関数に対して
 \begin{equation}
-	(f,g) = \int_I dx \rho(x)f^*(x)g(x)
+  (f,g) = \int_I dx \rho(x)f^*(x)g(x)
 \end{equation}
 と内積を定義する。
 $\rho(x)$は$I$上で常に正で、$\int_I dx\rho(x)x^k,(k = 0,1,2,\cdots)$が有限となるようなものとする。
@@ -10,30 +10,30 @@ $\rho(x)$は$I$上で常に正で、$\int_I dx\rho(x)x^k,(k = 0,1,2,\cdots)$が�
 $h_0(x), h_1(x), h_2(x), \cdots$をこの内積に関数直交多項式と呼ぶ。
 つまり、$h_k(x)$は$k$次の多項式であり、
 \begin{equation}
-	(h_k,h_l) = \int_I dx\rho(x)h_k^*(x)h_l(x) = \delta_{k,l}
+  (h_k,h_l) = \int_I dx\rho(x)h_k^*(x)h_l(x) = \delta_{k,l}
 \end{equation}
 を満たす。
 
 今、ある$\rho(x)$に対して、$I$上の関数$X(x)$をうまくとって、
 \begin{equation}
-	\label{Fn}
-	F_n(x) = \dfrac{1}{\rho(x)}\dfrac{d^n}{dx^n}(\rho(x)X(x)^n)
+  \label{Fn}
+  F_n(x) = \dfrac{1}{\rho(x)}\dfrac{d^n}{dx^n}(\rho(x)X(x)^n)
 \end{equation}
 が$n$次多項式になるとする。
 $m < n$となる$m$に対して、内積$(x^m, F_n(x))$を計算する。
 \begin{align}
-	(x^m, F_n(x)) &= \int_I dx\rho(x)x^m F_n(x) \\
-	&= \int_I dx\rho(x)x^m \dfrac{1}{\rho(x)}\dfrac{d^n}{dx^n}(\rho(x)X(x)^n) \\
-	&= \int_I dx x^m \dfrac{1}{\rho(x)}\dfrac{d^n}{dx^n}(\rho(x)X(x)^n) \\
-	&= \left[ x^m \dfrac{d^n}{dx^n}(\rho(x)X(x)^n) \right]_{Iの両端}
-	- \int_I dx\rho(x)(\dfrac{d}{dx}x^m)\dfrac{d^{n-1}}{dx^{n-1}}(\rho(x)X(x)^n) \\
-	&\vdots  \nonumber\\
-	&= (-1)^n\int_I dx\rho(x)(\dfrac{d^n}{dx^n}x^m)X(x)^n \\
-	&= 0
+  (x^m, F_n(x)) &= \int_I dx\rho(x)x^m F_n(x) \\
+  &= \int_I dx\rho(x)x^m \dfrac{1}{\rho(x)}\dfrac{d^n}{dx^n}(\rho(x)X(x)^n) \\
+  &= \int_I dx x^m \dfrac{1}{\rho(x)}\dfrac{d^n}{dx^n}(\rho(x)X(x)^n) \\
+  &= \left[ x^m \dfrac{d^n}{dx^n}(\rho(x)X(x)^n) \right]_{Iの両端}
+  - \int_I dx\rho(x)(\dfrac{d}{dx}x^m)\dfrac{d^{n-1}}{dx^{n-1}}(\rho(x)X(x)^n) \\
+  &\vdots  \nonumber\\
+  &= (-1)^n\int_I dx\rho(x)(\dfrac{d^n}{dx^n}x^m)X(x)^n \\
+  &= 0
 \end{align}
 ただし
 \begin{equation}
-	\left[ \dfrac{d^k}{dx^k}(\rho(x)X(x)^n) \right]_{Iの両端} = 0, ~(k = 0,1,2,\ldots,n-1)
+  \left[ \dfrac{d^k}{dx^k}(\rho(x)X(x)^n) \right]_{Iの両端} = 0, ~(k = 0,1,2,\ldots,n-1)
 \end{equation}
 が成立しているとした。
 
@@ -44,15 +44,15 @@ $m < n$となる$m$に対して、内積$(x^m, F_n(x))$を計算する。
 ここで、$X(x)$が存在し、$2$次以下の実多項式である場合を考える。
 以下のような$2$階の微分演算子$\hat{O}$を定義する。
 \begin{equation}
-	\label{OpeO}
-	\hat{O} = \dfrac{1}{\rho(x)}\dfrac{d}{dx}\rho(x)X(x)\dfrac{d}{dx}
+  \label{OpeO}
+  \hat{O} = \dfrac{1}{\rho(x)}\dfrac{d}{dx}\rho(x)X(x)\dfrac{d}{dx}
 \end{equation}
 これを計算すると、
 \begin{align}
-	\hat{O} &= \dfrac{1}{\rho(x)}\dfrac{d}{dx}\rho(x)X(x)\dfrac{d}{dx} \\
-					&= \dfrac{1}{\rho(x)} \dfrac{d}{dx}\left[\rho(x)X(x) \right]\dfrac{d}{dx}
-					+ X(x)\dfrac{d^2}{dx^2} \\
-					&= F_1(x)\dfrac{d}{dx} + X(x)\dfrac{d^2}{dx^2}
+  \hat{O} &= \dfrac{1}{\rho(x)}\dfrac{d}{dx}\rho(x)X(x)\dfrac{d}{dx} \\
+  &= \dfrac{1}{\rho(x)} \dfrac{d}{dx}\left[\rho(x)X(x) \right]\dfrac{d}{dx}
+  + X(x)\dfrac{d^2}{dx^2} \\
+  &= F_1(x)\dfrac{d}{dx} + X(x)\dfrac{d^2}{dx^2}
 \end{align}
 となる。
 次に、$\hat{O}F_n$を計算する。
@@ -60,21 +60,21 @@ $F_1$は$1$次多項式、$X(x)$はたかだか$2$次多項式なので、$\hat{
 であることが分かる。
 つまり、
 \begin{equation}
-	\label{OFn}
-	\hat{O}F_n(x) = \sum_{m=0}^n c_m F_m(x)
+  \label{OFn}
+  \hat{O}F_n(x) = \sum_{m=0}^n c_m F_m(x)
 \end{equation}
 と展開できる。
 $c_m$は定数で、これを求める。
 \begin{equation}
-	(F_m, \hat{O}F_n) = (F_m,\sum_{m=0}^n c_m F_m(x)) = c_m(F_m,F_m)
+  (F_m, \hat{O}F_n) = (F_m,\sum_{m=0}^n c_m F_m(x)) = c_m(F_m,F_m)
 \end{equation}
 と、$F_m$との内積を取れば$c_m$が求められる。
 ここで、右辺は$m < n$の時は$0$である。
 つまり、$m < n$の時は$c_m = 0$となる。
 よって、(\ref{OFn})より、
 \begin{equation}
-	\label{OFncnFn}
-	\hat{O}F_n(x) = c_n F_n(x)
+  \label{OFncnFn}
+  \hat{O}F_n(x) = c_n F_n(x)
 \end{equation}
 となる。
 $c_n$は定数であるので、このことから、演算子$\hat{O}$の固有ベクトルが$F_n$で、固有値が$c_n$となっていることが分かる。
@@ -83,23 +83,23 @@ $F_1$は$1$次多項式、$X(x)$は$2$次以下の多項式だということを
 $x^n$の係数を比較すれば良い。
 すると、
 \begin{equation}
-	\label{cn}
-	c_n = nF_1' + \dfrac{n(n-1)}{2}X''
+  \label{cn}
+  c_n = nF_1' + \dfrac{n(n-1)}{2}X''
 \end{equation}
 となる。
 
 \subsection{Legendre多項式}
-区間と$I$として有限区間$[-1,1]$をとる。
+区間$I$として有限区間$[-1,1]$をとる。
 $\rho(x) = 1$、$X(x) = 1 - x^2$とすると、(\ref{Fn})は$n$次多項式である。
 $F_n(1) = 1$となるようにしたものをLegendre多項式と呼び、$P_n(x)$とかく。
 \begin{equation}
-	\label{legendre_polynomials}
-	P_n(x) = \dfrac{1}{2^n n!}\dfrac{d^n}{dx^n}(x^2 - 1)^n
+  \label{legendre_polynomials}
+  P_n(x) = \dfrac{1}{2^n n!}\dfrac{d^n}{dx^n}(x^2 - 1)^n
 \end{equation}
 また、(\ref{Fn})より$F_1(x) = -2x$なので、(\ref{OpeO})、(\ref{OFncnFn})、(\ref{cn})より、
 \begin{equation}
-	\label{legendre_DE}
-	\left( \dfrac{d}{dx}(1-x^2)\dfrac{d}{dx} + n(n+1)\right)P_n(x) = 0
+  \label{legendre_DE}
+  \left( \dfrac{d}{dx}(1-x^2)\dfrac{d}{dx} + n(n+1)\right)P_n(x) = 0
 \end{equation}
 と求まる。
 これをLegendreの微分方程式と呼ぶ。
@@ -107,13 +107,60 @@ $F_n(1) = 1$となるようにしたものをLegendre多項式と呼び、$P_n(x
 $P_n$をいくつか書いておく。
 
 \begin{align}
-	P_0(x) &= 1 \\
-	P_1(x) &= x \\
-	P_2(x) &= \dfrac{1}{2}(3x^2 - 1) \\
-	P_3(x) &= \dfrac{1}{2}(5x^3 - 3x)
+  P_0(x) &= 1 \\
+  P_1(x) &= x \\
+  P_2(x) &= \dfrac{1}{2}(3x^2 - 1) \\
+  P_3(x) &= \dfrac{1}{2}(5x^3 - 3x)
 \end{align}
 
-
-
 \subsection{Laguerre多項式}
-\subsection{Hermite多項式}
+区間$I$として半無限区間$[o,\infty)$をとる。
+  $\rho(x) = e^{-x}$、$X(x) = x$とすると、(\ref{Fn})は$n$次多項式である。
+  これをLaguerre多項式と呼び、$L_n(x)$とかく。
+  \begin{equation}
+    \label{laguerre_polynomials}
+    L_n(x) = e^x\dfrac{d^n}{dx^n}(e^{-x}x^n)
+  \end{equation}
+  また、(\ref{Fn})より、$F_1(x) = -x+1$なので、(\ref{OpeO})、(\ref{OFncnFn})、(\ref{cn})より、
+  \begin{equation}
+    \label{laguerre_DE}
+    \left[ e^x\dfrac{d}{dx}(e^{-x}x)\dfrac{d}{dx} + n\right]L_n(x) = \left[ x\dfrac{d^2}{dx^2} + (1-x)\dfrac{d}{dx} + n\right]L_n(x) = 0
+  \end{equation}
+  と求まる。
+  これをLaguerreの微分方程式と呼ぶ。
+
+  級数表現すると、
+  \begin{equation}
+    L_n(x) = \sum_{m = 0}^n (-1)^m {}_nC_m\dfrac{n!}{m!}x^m = \sum_{m = 0}^n (-1)^m\dfrac{n!n!}{m!m!(n-m)!}x^m
+  \end{equation}
+
+  漸化式を用いると、
+  $n \leq 2$の$L_n(x)$は
+  \begin{equation}
+    L_{n+1}(x) = (2n + 1 -x)L_n(x) - n^2L_n(x)
+  \end{equation}
+  $L_n$をいくつか書いておく。
+  \begin{align}
+    L_0(x) &= 1 \\
+    L_1(x) &= -x + 1 \\
+    L_2(x) &= x^2 -4x + 2 \\
+    L_3(x) &= -x^3 + 9x^2 -18x^2 + 6
+  \end{align}
+
+  \subsection{Laguerre陪多項式}
+  Laguerre陪多項式はLaguerre多項式$L_n(x)$を用いて
+  \begin{equation}
+    L_n^k(x) = \dfrac{d^k}{dx^k}L_n(x)
+  \end{equation}
+  と定義される。
+  具体的には
+  \begin{align}
+    L_n^k(x) &= \sum_{m=k}^{n}(-1)^m \dfrac{n!n!m!}{(n-m)!m!m!(m-k)!}x^{m-k} \\
+    &= \sum_{m=k}^{n}(-1)^n \dfrac{n!n!}{m!(n-m)(m-k)!}x^{m-k} \\
+    &= \sum_{m=0}^{n-k}(-1)^{m+k} \dfrac{n!n!}{m!(m+k)!(n-m-k)!}x^{m}
+  \end{align}
+
+
+
+
+  \subsection{Hermite多項式}
