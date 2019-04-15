@@ -156,11 +156,16 @@ $P_n$をいくつか書いておく。
   具体的には
   \begin{align}
     L_n^k(x) &= \sum_{m=k}^{n}(-1)^m \dfrac{n!n!m!}{(n-m)!m!m!(m-k)!}x^{m-k} \\
-    &= \sum_{m=k}^{n}(-1)^n \dfrac{n!n!}{m!(n-m)(m-k)!}x^{m-k} \\
+    &= \sum_{m=k}^{n}(-1)^m \dfrac{n!n!}{m!(n-m)(m-k)!}x^{m-k} \\
     &= \sum_{m=0}^{n-k}(-1)^{m+k} \dfrac{n!n!}{m!(m+k)!(n-m-k)!}x^{m}
   \end{align}
 
-
+  このLaguerre陪多項式は微分方程式
+  \begin{equation}
+    x\dfrac{d^2}{dx^2}L_n^k(x) + (k+1-x)\dfrac{d}{dx}L_n^k(x) + (n-k)L_n^k(x) = 0
+    \end{equation}
+  を満たす。
+  これをLaguerre陪微分方程式と呼び、$k = 0$の時がLaguerre微分方程式である。
 
 
   \subsection{Hermite多項式}

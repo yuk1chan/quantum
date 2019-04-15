@@ -962,19 +962,19 @@ $n_r$を動径量子数、$n$を主量子数と呼ぶ。
 $k$は$0$から$n-l-1$の範囲である。
 ここで、
 \begin{equation}
-	a_0 = (-1)^{2l+1}\dfrac{((n+l)!)^2}{(n−l−1)!(2l+1)!}
+	a_0 = \dfrac{((n+l)!)^2}{(n−l−1)!(2l+1)!}
 \end{equation}
 とすると、
 \begin{equation}
-	a_k = (-1)^{k+2l+1}\dfrac{((n+l)!)^2}{k!(k+2l+1)!(n-l-k-1)!}
+	a_k = (-1)^{k}\dfrac{((n+l)!)^2}{k!(k+2l+1)!(n-l-k-1)!}
 \end{equation}
 よって、(\ref{L_polynomials})より
 \begin{equation}
-	L(\rho) = \sum_{k=0}^{n-l-1}(-1)^{k+2l+1}\dfrac{((n+l)!)^2}{k!(k+2l+1)!(n-l-k-1)!}\rho^k
+	L(\rho) = \sum_{k=0}^{n-l-1}(-1)^{k}\dfrac{((n+l)!)^2}{k!(k+2l+1)!(n-l-k-1)!}\rho^k
 \end{equation}
 これは、
 \begin{equation}
-	L_p^q(\rho) = \sum_{k = 0}^{p-q} (-1)^{k+q} \dfrac{p!p!}{k!(k+q)!(p-k-q)!}\rho^k
+	L_p^q(\rho) = \sum_{k = 0}^{p-q} (-1)^{k} \dfrac{p!p!}{k!(k+q)!(p-k-q)!}\rho^k
 \end{equation}
 と定義されるLaguerre陪多項式の$p = n+l,q = 2l+1$に他ならない。
 
