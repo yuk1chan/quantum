@@ -5,37 +5,36 @@ $x$軸上で原点からの距離に比例する引力を受けて単振動す�
 よって、ポテンシャルは位置にのみ依存するので、時間に依存しないシュレディンガー方程式を用いて
 
 \begin{equation}
-  \label{harmony_schrodinger_eq}
+  \label{harmonic:harmony_schrodinger_eq}
   E\psi(x) = - \dfrac{\hbar^2}{2m} \dfrac{d^2 \psi(x)}{d x^2} + \dfrac{1}{2}m\omega x^2\psi(x)
 \end{equation}
 
 となる。このままでも解くことができるが、式を簡単にして見通しをよくしたい。
 そのためには、
 \begin{align}
-  \label{xi}
+  \label{harmonic:xi}
   \xi &= \sqrt{\dfrac{m\omega}{\hbar}}x \\
-  \label{eps}
+  \label{harmonic:eps}
   \epsilon &= \dfrac{2E}{\hbar\omega}
 \end{align}
 という、無次元の変数$\xi$、$\epsilon$を導入する。
 
-(\ref{harmony_schrodinger_eq})の両辺に$\dfrac{2}{\hbar\omega}$をかけると、
+(\ref{harmonic:harmony_schrodinger_eq})の両辺に$\dfrac{2}{\hbar\omega}$をかけると、
 
 \begin{equation}
-  \dfrac{2E}{\hbar\omega}\psi(x) = - \dfrac{\hbar}{m\omega} \dfrac{d^2 \psi(x)}{d x^2} + \dfrac{m\omega}{\hbar} x^2\psi(x)
+  \dfrac{2E}{\hbar\omega}\psi(x) = - \dfrac{\hbar}{m\omega} \dfrac{d^2 \psi(x)}{d x^2} + \dfrac{mx^2}{\hbar} \psi(x)
 \end{equation}
-
 変形して、
 \begin{equation}
-  \dfrac{2E}{\hbar\omega}\psi(x) = - \dfrac{d^2 \psi(x)}{d \dfrac{m\omega}{\hbar} x^2} + \dfrac{m\omega}{\hbar} x^2\psi(x)
+  \dfrac{2E}{\hbar\omega}\psi(x) = - \dfrac{d^2 \psi(x)}{d \dfrac{m\omega}{\hbar} x^2} + \dfrac{mx^2}{\hbar} \psi(x)
 \end{equation}
-(\ref{xi})、(\ref{eps})より、
+(\ref{harmonic:xi})、(\ref{harmonic:eps})より、
 \begin{equation}
   \epsilon\psi(\xi) = - \dfrac{d^2 \psi(\xi)}{d \xi^2} + \xi^2\psi(\xi)
 \end{equation}
 よって、
 \begin{equation}
-  \label{harmony_DE}
+  \label{harmonic:harmony_DE}
   \dfrac{d^2 \psi(\xi)}{d \xi^2} + (\epsilon - \xi^2)\psi(\xi) = 0
 \end{equation}
 となる。
@@ -57,7 +56,7 @@ $\xi \to \pm\infty$の極限では波動関数$\psi$は収束しなければい�
   \psi(\xi) = He^{-\frac{\xi^2}{2}}
 \end{equation}
 これは、$\xi \to \pm \infty$の極限を仮定した解であることに注意しなければならない。
-実際に、これを(\ref{harmony_DE})に戻してみると、当然解になっていない事が確認できる。
+実際に、これを(\ref{harmonic:harmony_DE})に戻してみると、当然解になっていない事が確認できる。
 この解を元に$\xi \to \pm \infty$の極限以外でも成立するような解を探す。
 では、どうすれば良いのかというと、定数$H$が実は$\xi$の関数$H(\xi)$であると仮定する上手く行く。
 
@@ -66,7 +65,7 @@ $\xi \to \pm\infty$の極限では波動関数$\psi$は収束しなければい�
   \psi(\xi) = H(\xi)e^{-\frac{\xi^2}{2}}
 \end{equation}
 
-これを(\ref{harmony_DE})に戻す。
+これを(\ref{harmonic:harmony_DE})に戻す。
 積の微分であることに注意すると、
 \begin{equation}
   \dfrac{d\psi(\xi)}{d\xi} = e^{-\frac{\xi^2}{2}}\dfrac{dH(\xi)}{d\xi} - \xi H(\xi)e^{-\frac{\xi^2}{2}}
@@ -76,10 +75,10 @@ $\xi \to \pm\infty$の極限では波動関数$\psi$は収束しなければい�
   + (\xi^2 - 1)H(\xi)e^{-\frac{\xi^2}{2}}
 \end{equation}
 
-なので、(\ref{harmony_DE})に戻すと、
+なので、(\ref{harmonic:harmony_DE})に戻すと、
 
 \begin{equation}
-  \label{H_DE}
+  \label{harmonic:H_DE}
   \left[\dfrac{d^2}{d\xi^2} -2\xi\dfrac{d}{d\xi} + (\epsilon -1)\right]H(\xi) = 0
 \end{equation}
 
@@ -96,7 +95,7 @@ $\xi \to \pm\infty$の極限では波動関数$\psi$は収束しなければい�
 \begin{equation}
   \dfrac{d^2 H(\xi)}{d\xi} = \sum_{k=2}^{\infty}a_k k(k-1)\xi^{k-2} = \sum_{k=0}^{\infty}a_{k+2} (k+2)(k+1)\xi^k
 \end{equation}
-よって、(\ref{H_DE})に戻すと、
+よって、(\ref{harmonic:H_DE})に戻すと、
 \begin{equation}
   \sum_{k=0}^{\infty} \left[ (k+2)(k+1)a_{k+2} - (2k - \epsilon + 1)a_k  \right] \xi^k = 0
 \end{equation}
@@ -106,7 +105,7 @@ $\xi \to \pm\infty$の極限では波動関数$\psi$は収束しなければい�
 \end{equation}
 という事がわかるので、
 \begin{equation}
-  \label{recurrence_relation_1}
+  \label{harmonic:recurrence_relation_1}
   a_{k+2} = \dfrac{(2k - \epsilon + 1)}{(k+2)(k+1)}a_k
 \end{equation}
 となり、
@@ -131,9 +130,9 @@ $k = 2n$とすると、$a_{2(n+1)} \approx \dfrac{1}{n}a_{2n}$となる。
 となり、$\xi \to \infty$で発散してしまう。
 $H(\xi)$が無限級であるために発散してしまうのだ。
 なので、収束させるために$H(\xi)$が有限個の項で終わるような条件を付けてやれば良い。
-(\ref{recurrence_relation_1})より、
+(\ref{harmonic:recurrence_relation_1})より、
 \begin{equation}
-  \label{eps_requirement}
+  \label{harmonic:eps_requirement}
   \epsilon = 2n + 1
 \end{equation}
 とすれば、第$n$項は存在するが、第$n+2$項から$0$になる。
@@ -169,16 +168,16 @@ $$
     & \vdots \end{aligned}
 \end{equation}
 
-$a_0$と$a_1$が$n$によって違うが、微分方程式(\ref{H_DE})を満たすので気にしなくて良い。
+$a_0$と$a_1$が$n$によって違うが、微分方程式(\ref{harmonic:H_DE})を満たすので気にしなくて良い。
 
 以上のことより、
 \begin{equation}
-  \label{harmony_psi}
+  \label{harmonic:harmony_psi}
   \psi_n(\xi) = H_n(\xi)e^{-\frac{\xi^2}{2}}
 \end{equation}
-と、(\ref{harmony_schrodinger_eq})を解く事ができた。
+と、(\ref{harmonic:harmony_schrodinger_eq})を解く事ができた。
 
-ここで、(\ref{eps})と、(\ref{eps_requirement})を思い出してみよう。
+ここで、(\ref{harmonic:eps})と、(\ref{harmonic:eps_requirement})を思い出してみよう。
 これらより、
 \begin{equation}
   E_n = \hbar\omega(n+\frac{1}{2})
@@ -198,7 +197,7 @@ $n = 0$の時、$E_0 = \frac{1}{2}\hbar\omega$である。
 位置と運動量を同時に確定させないためだ。
 この、$n=0$の時の振動を{\bf 零点振動}と呼び、この時のエネルギー$E_0$のことを{\bf 零点エネルギー}と呼ぶ。
 
-さて、(\ref{harmony_psi})より、波動関数を求める事ができたので、実際に波動関数の形を見てみよう。
+さて、(\ref{harmonic:harmony_psi})より、波動関数を求める事ができたので、実際に波動関数の形を見てみよう。
 固有エネルギー$En$と対応する波動関数$\psi_n$を$n=11$までplotしたものだ。
 波動関数は固有エネルギー分を平行移動してあり、規格化されている。
 \begin{figure}[htb]
